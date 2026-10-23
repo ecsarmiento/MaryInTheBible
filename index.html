@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblical Stories — Home</title>
+<style>
+/* ===== GLOBAL ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f4eb 0%, #ebe3d0 100%);
+  padding: 40px 20px;
+}
 
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===== HEADER ===== */
+header {
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #b89a6d;
+}
+h1 {
+  font-size: 2.4rem;
+  color: #5a3f54;
+  margin-bottom: 12px;
+}
+.subtitle {
+  font-size: 1.1rem;
+  color: #7a6a58;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== CHARACTER GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.card {
+  background: #fff;
+  border: 3px solid #b89a6d;
+  border-radius: 12px;
+  padding: 25px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0 rgba(150, 120, 80, 0.15);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 6px 8px 0 rgba(150, 120, 80, 0.2);
+  border-color: #9a7d58;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.card p {
+  font-size: 0.95rem;
+  color: #7a6a58;
+  line-height: 1.5;
+}
+
+/* Individual card colors */
+.card.mary { border-color: #5a3f54; }
+.card.mary h2 { color: #5a3f54; }
+.card.mary:hover { border-color: #4a2f44; background: #faf5f8; }
+
+.card.joseph { border-color: #6b5a3f; }
+.card.joseph h2 { color: #6b5a3f; }
+.card.joseph:hover { border-color: #5a4a34; background: #faf8f2; }
+
+.card.jesus { border-color: #d4a044; }
+.card.jesus h2 { color: #b8860b; }
+.card.jesus:hover { border-color: #b8860b; background: #fffaf0; }
+
+.card.adam-eve { border-color: #5a8a5a; }
+.card.adam-eve h2 { color: #3a6347; }
+.card.adam-eve:hover { border-color: #4a7a4a; background: #f0f8e8; }
+
+.card.noah { border-color: #6b7a8f; }
+.card.noah h2 { color: #525f72; }
+.card.noah:hover { border-color: #525f72; background: #f5f8fc; }
+
+/* ===== FOOTER ===== */
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #d8c8b8;
+  color: #9a8a78;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>✨ Biblical Stories & Characters</h1>
+    <p class="subtitle">
+      Meet the people of faith who show us God’s love, faithfulness, and grace.<br>
+      Click a card to hear their story.
+    </p>
+  </header>
+
+  <div class="grid">
+    <!-- Mary -->
+    <a href="mary-final.html" class="card mary">
+      <div class="card-icon">👩</div>
+      <h2>Mary</h2>
+      <p>Mother of Jesus — the faithful servant who said "Yes" to God</p>
+    </a>
+
+    <!-- Joseph -->
+    <a href="joseph.html" class="card joseph">
+      <div class="card-icon">👨</div>
+      <h2>Joseph</h2>
+      <p>Carpenter & protector — faithful in dreams, in danger, and in quiet service</p>
+    </a>
+
+    <!-- Jesus -->
+    <a href="jesus.html" class="card jesus">
+      <div class="card-icon">👑</div>
+      <h2>Jesus</h2>
+      <p>Saviour & Lord — the Way, the Truth, and the Life, alive forevermore</p>
+    </a>
+
+    <!-- Adam & Eve -->
+    <a href="adam-eve.html" class="card adam-eve">
+      <div class="card-icon">🌿</div>
+      <h2>Adam & Eve</h2>
+      <p>The first family — created in God's image, and the beginning of His promise</p>
+    </a>
+
+    <!-- Noah -->
+    <a href="noah.html" class="card noah">
+      <div class="card-icon">🌊</div>
+      <h2>Noah</h2>
+      <p>Faithful builder — the ark, the flood, and the rainbow promise for all generations</p>
+    </a>
+  </div>
+
+  <footer>
+    Created to share stories of faith · All characters walk, speak, and share their hearts
+  </footer>
+</div>
+
+</body>
+</html>
