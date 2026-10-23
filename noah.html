@@ -8,57 +8,150 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #e6edf2 0%, #cfd8e0 100%);
+  background: linear-gradient(180deg, #e0e8f0 0%, #a0b8d0 100%);
   overflow: hidden;
   position: relative;
 }
 .home-btn {
   position: absolute; top: 15px; left: 20px; z-index: 100;
   background: #fff; padding: 8px 16px; border-radius: 6px;
-  border: 2px solid #6b7a8f;
-  text-decoration: none; color: #4a5a6a; font-weight: bold;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  border: 2px solid #4070a0;
+  text-decoration: none; color: #205080; font-weight: bold;
 }
-.home-btn:hover { background: #f5f8fc; }
-.stage {
-  position: absolute; bottom: 120px; left: 0; right: 0; height: 400px; overflow: hidden;
-}
-.noah {
-  position: absolute; bottom: 20px; width: 140px; height: 300px; left: -200px;
-}
-@keyframes walkBob {
-  0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}
-}
+.home-btn:hover { background: #f0f4f8; }
+.stage { position: absolute; bottom: 100px; left: 0; right: 0; height: 400px; overflow: hidden; }
+.noah { position: absolute; bottom: 20px; width: 140px; height: 300px; left: -200px; }
+@keyframes walkBob { 0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);} }
 .noah.walking{animation:walkBob 0.5s infinite ease-in-out;}
-@keyframes speakBreath {
-  0%,100%{transform:translateY(0)scale(1);}50%{transform:translateY(-4px)scale(1.015);}
-}
+@keyframes speakBreath { 0%,100%{transform:scale(1);}50%{transform:scale(1.02);} }
 .noah.speaking{animation:speakBreath 1.8s infinite ease-in-out;}
-.head-wrapper{position:absolute;top:0;left:50%;transform:translateX(-50%);width:90px;height:95px;}
-.hair-back{width:90px;height:50px;background:linear-gradient(180deg,#d4c8b8 0%,#b8a890 100%);border-radius:4px 4px 0 0;}
-.hair-front{position:absolute;top:0;left:10px;width:70px;height:24px;background:#e0d4c4;border-radius:0 0 6px 6px;}
-.beard{position:absolute;top:40px;left:12px;width:66px;height:52px;background:linear-gradient(180deg,#e8dfd0 0%,#cfc2a8 100%);border-radius:4px 4px 8px 8px;clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);}
-.face{position:absolute;top:18px;left:15px;width:60px;height:42px;background:#e6c9a8;border-radius:2px;}
-.eyes{position:absolute;top:24px;left:0;width:100%;display:flex;justify-content:center;gap:14px;}
-.eye{width:9px;height:9px;background:#2c2c2c;border-radius:50%;}
-.mouth{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:15px;height:6px;background:#9a6b4a;border-radius:0 0 10px 10px;transition:all 0.3s;}
-.noah.speaking .mouth{height:9px;border-radius:50%;}
-.robe{position:absolute;top:85px;left:50%;transform:translateX(-50%);width:110px;height:210px;background:linear-gradient(180deg,#6b7a8f 0%,#525f72 50%,#3e4758 100%);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);border:3px solid #2d3542;}
-.robe-inner{position:absolute;top:12px;left:10px;right:10px;bottom:0;background:linear-gradient(180deg,#7c8ca2 0%,#6b7a8f 100%);opacity:0.4;}
-.cloak{position:absolute;top:90px;left:50%;transform:translateX(-50%);width:118px;height:200px;background:linear-gradient(180deg,#8fa4b8 0%,#7c94a8 100%);clip-path:polygon(0 0,100% 0,92% 100%,8% 100%);border:3px solid #6b7a8f;opacity:0.35;}
-.arm-left,.arm-right{position:absolute;top:105px;width:24px;height:85px;background:#525f72;border:2px solid #2d3542;transform-origin:top center;}
-.arm-left{left:10px;transform:rotate(-10deg);}
-.arm-right{right:10px;transform:rotate(10deg);}
-.noah.walking .arm-left{animation:armSwingL 0.5s infinite alternate;}
-.noah.walking .arm-right{animation:armSwingR 0.5s infinite alternate;}
-@keyframes armSwingL{from{transform:rotate(-10deg);}to{transform:rotate(5deg);}}
-@keyframes armSwingR{from{transform:rotate(10deg);}to{transform:rotate(-5deg);}}
-.ground{position:absolute;bottom:0;left:0;right:0;height:100px;background:repeating-linear-gradient(90deg,#8b7355 0 40px,#7a654c 40px 80px);}
-.speech-container{position:absolute;top:30px;left:50%;transform:translateX(-50%);background:#fff;border:4px solid #6b7a8f;border-radius:8px;padding:22px;width:90%;max-width:550px;box-shadow:6px 6px 0 rgba(60,70,90,0.2);opacity:0;transition:opacity 0.8s ease;z-index:10;}
-.speech-container.visible{opacity:1;}
-.speech-text{font-size:1.05rem;line-height:1.7;color:#2a3a4a;min-height:80px;padding:14px;background:#f5f8fc;border-radius:4px;border:2px solid #d8e2ec;margin-bottom:15px;}
-.controls{display:flex;gap:12px;flex-wrap:wrap;}
-button{padding:12px 24px;font-size:1rem;font-weight:bold;border:none;border-radius:6px;cursor:pointer;transition:all 0.25s;}
-#startBtn{background:#6b7a8f;color:#fff;}
-#startBtn:hover{background:#525f72;transform:translateY(-2px);}
-#resetBtn{background:#b89a6d;color:#fff;}
+.head-wrapper { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 90px; }
+.hair { width: 80px; height: 35px; background: linear-gradient(180deg, #d8d8d8 0%, #b8b8b8 100%); border-radius: 50% 50% 0 0; }
+.beard { position: absolute; top: 45px; left: 5px; width: 70px; height: 55px; background: linear-gradient(180deg, #e8e8e8 0%, #c8c8c8 100%); border-radius: 8px; clip-path: polygon(10% 0,90% 0,100% 100%,0 100%); }
+.face { position: absolute; top: 15px; left: 10px; width: 60px; height: 45px; background: #e8c8a8; border-radius: 4px; }
+.eyes { position: absolute; top: 22px; width: 100%; display: flex; justify-content: center; gap: 14px; }
+.eye { width: 9px; height: 9px; background: #333; border-radius: 50%; }
+.mouth { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 16px; height: 7px; background: #907050; border-radius: 0 0 10px 10px; transition: all 0.3s; }
+.noah.speaking .mouth { height: 10px; border-radius: 50%; }
+.robe { position: absolute; top: 85px; left: 50%; transform: translateX(-50%); width: 110px; height: 215px; background: linear-gradient(180deg, #887060 0%, #605040 100%); clip-path: polygon(8% 0,92% 0,100% 100%,0 100%); border: 3px solid #403020; }
+.staff { position: absolute; top: 95px; right: 10px; width: 10px; height: 180px; background: linear-gradient(90deg, #705030 0%, #907050 50%, #705030 100%); border-radius: 2px; transform: rotate(8deg); }
+.ground { position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: repeating-linear-gradient(90deg, #7090b8 0 40px, #507098 40px 80px); }
+.speech-container { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: #fff; border: 4px solid #4070a0; border-radius: 8px; padding: 20px; width: 90%; max-width: 550px; box-shadow: 6px 6px 0 rgba(64,112,160,0.15); opacity: 0; transition: opacity 0.8s ease; z-index: 10; }
+.speech-container.visible { opacity: 1; }
+.speech-text { font-size: 1.05rem; line-height: 1.7; color: #204060; min-height: 80px; padding: 14px; background: #f0f4f8; border-radius: 4px; border: 2px solid #c0d0e0; margin-bottom: 15px; }
+.controls { display: flex; gap: 12px; flex-wrap: wrap; }
+button { padding: 12px 24px; font-size: 1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s; }
+#startBtn { background: #4070a0; color: #fff; }
+#startBtn:hover { background: #305880; transform: translateY(-2px); }
+#resetBtn { background: #70a0d0; color: #fff; }
+#resetBtn:hover { background: #5080b0; transform: translateY(-2px); }
+.voice-status { margin-top: 12px; font-size: 0.9rem; color: #666; }
+h3 { color: #305880; margin-bottom: 10px; }
+.rainbow { position: absolute; top: 20px; right: 20px; width: 150px; height: 75px; border-radius: 75px 75px 0 0; background: linear-gradient(180deg, #ff4444 0%, #ff9933 17%, #ffdd33 34%, #44cc44 51%, #3399ff 68%, #8866ff 85%, #cc66ff 100%); opacity: 0; transition: opacity 2s ease; }
+.rainbow.visible { opacity: 0.7; }
+</style>
+</head>
+<body>
+<a href="index.html" class="home-btn">🏠 Home</a>
+<div class="rainbow" id="rainbow"></div>
+<div class="speech-container" id="speechBox">
+  <h3>Noah — Faithful Builder</h3>
+  <p class="speech-text" id="speechText">God called me to build. Click to hear the promise of the rainbow.</p>
+  <div class="controls">
+    <button id="startBtn">🎙️ Begin Story</button>
+    <button id="resetBtn">🔄 Restart</button>
+  </div>
+  <p class="voice-status" id="voiceStatus">Status: Ready</p>
+</div>
+<div class="stage">
+  <div class="noah" id="noah">
+    <div class="head-wrapper">
+      <div class="hair"></div>
+      <div class="face">
+        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="beard"></div>
+    </div>
+    <div class="robe"></div>
+    <div class="staff"></div>
+  </div>
+</div>
+<div class="ground"></div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const script = [
+    "I am Noah. I walked with God in a time when the world had forgotten him.",
+    "The earth was filled with violence and corruption. God saw that every inclination of human hearts was only evil all the time.",
+    "He said: 'I will wipe mankind from the face of the earth. But I have found favor in you.'",
+    "Build yourself an ark of cypress wood — make rooms in it and coat it with pitch inside and out.",
+    "This is how you shall build it: three hundred cubits long, fifty wide, and thirty high. Make a roof and put a door in the side.",
+    "Bring two of every living creature — male and female — to keep them alive with you.",
+    "Take also every kind of food that is to be eaten and store it away. It will be food for you and for them.",
+    "I did all that God commanded. I did exactly as he said.",
+    "It rained for forty days and forty nights. The waters rose and lifted the ark high above the earth.",
+    "Every living thing on dry land perished. Only my family and the creatures with me remained safe in the ark.",
+    "The waters receded slowly. I sent out a dove — first it returned with nothing, then an olive leaf, and finally it did not come back.",
+    "After a year, we stepped onto dry ground. I built an altar and worshipped the Lord.",
+    "God spoke: 'Never again will all life be destroyed by the waters. This is the sign of the covenant I am making between me and you.'",
+    "'I have set my rainbow in the clouds. It will be a sign of the covenant between me and the earth.'",
+    "Whenever the clouds cover the sky and the rainbow appears, I will see it and remember the everlasting covenant.",
+    "God is faithful. Even when the world is dark, his promise stands forever."
+  ];
+  const synth = window.speechSynthesis;
+  const noah = document.getElementById('noah');
+  const rainbow = document.getElementById('rainbow');
+  const speechBox = document.getElementById('speechBox');
+  const speechText = document.getElementById('speechText');
+  const startBtn = document.getElementById('startBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let currentPart = 0, voice = null;
+  const CENTER = window.innerWidth/2 - 70;
+  const EXIT = window.innerWidth + 200;
+  function loadVoices(){
+    const v = synth.getVoices();
+    voice = v.find(x=>x.lang.startsWith('en'))||v[0];
+    voiceStatus.textContent = `Voice: ${(voice?.name||'Default').slice(0,25)}… | Ready`;
+  }
+  synth.onvoiceschanged = loadVoices; loadVoices();
+  function begin(){
+    rainbow.classList.remove('visible');
+    noah.classList.add('walking');
+    noah.style.transition = 'left 2.5s ease-in-out';
+    noah.style.left = CENTER+'px';
+    setTimeout(()=>{noah.classList.remove('walking');noah.classList.add('speaking');speechBox.classList.add('visible');speakNext();},2500);
+  }
+  function speakNext(){
+    if(currentPart>=script.length){end();return;}
+    speechText.textContent = script[currentPart];
+    const u = new SpeechSynthesisUtterance(script[currentPart]);
+    u.voice = voice; u.rate=0.82; u.pitch=0.95; u.volume=1;
+    u.onstart=()=>voiceStatus.textContent=`Speaking — ${currentPart+1}/${script.length}`;
+    u.onend=()=>{
+      if(currentPart === script.length - 3) rainbow.classList.add('visible');
+      currentPart++; setTimeout(speakNext, 2200);
+    };
+    synth.speak(u);
+  }
+  function end(){
+    noah.classList.remove('speaking');
+    speechText.textContent = "Look to the sky. When you see the rainbow, remember — God's mercy never fails.";
+    voiceStatus.textContent = "Finished — The rainbow remains";
+    setTimeout(()=>{noah.classList.add('walking');noah.style.transition='left 2.5s ease-in-out';noah.style.left=EXIT+'px';},3500);
+  }
+  function reset(){
+    synth.cancel(); currentPart=0;
+    noah.classList.remove('walking','speaking');
+    rainbow.classList.remove('visible');
+    noah.style.transition='none'; noah.style.left='-200px';
+    speechBox.classList.remove('visible');
+    speechText.textContent="God called me to build. Click to hear the promise of the rainbow.";
+    voiceStatus.textContent="Status: Ready";
+  }
+  startBtn.addEventListener('click',begin);
+  resetBtn.addEventListener('click',reset);
+});
+</script>
+</body>
+</html>
