@@ -3,127 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biblical Stories — Home</title>
+<title>Biblical Figures — Interactive Stories</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #f8f4eb 0%, #ebe3d0 100%);
-  padding: 40px 20px;
+  background: linear-gradient(180deg, #f8f5fa 0%, #e8e0f0 100%);
+  padding: 30px 20px;
 }
-.container { max-width: 1000px; margin: 0 auto; text-align: center; }
-header { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #b89a6d; }
-h1 { font-size: 2.2rem; color: #5a3f54; margin-bottom: 10px; }
-.subtitle { font-size: 1rem; color: #7a6a58; line-height: 1.6; }
-.grid {
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #9070b0;
+}
+h1 {
+  color: #503070;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.subtitle {
+  color: #705090;
+  font-size: 1.1rem;
+}
+.section-title {
+  color: #604080;
+  margin: 35px 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #d0c0e0;
+}
+.cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .card {
   background: #fff;
-  border: 3px solid;
-  border-radius: 12px;
-  padding: 25px;
+  border: 3px solid #b090d0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
   text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  box-shadow: 4px 4px 0 rgba(150, 120, 80, 0.15);
+  color: #402060;
+  box-shadow: 4px 4px 0 rgba(80,48,112,0.1);
+  transition: all 0.25s ease;
 }
-.card:hover { transform: translateY(-5px); box-shadow: 6px 8px 0 rgba(150, 120, 80, 0.2); }
-.card-icon { font-size: 2rem; margin-bottom: 10px; }
-.card h2 { font-size: 1.25rem; margin-bottom: 8px; }
-.card p { font-size: 0.9rem; color: #777; line-height: 1.5; }
-
-/* Card colors */
-.card.mary { border-color: #5a3f54; }
-.card.mary h2 { color: #5a3f54; }
-.card.mary:hover { background: #faf5f8; }
-
-.card.joseph { border-color: #6b5a3f; }
-.card.joseph h2 { color: #6b5a3f; }
-.card.joseph:hover { background: #faf8f2; }
-
-.card.jesus { border-color: #d4a044; }
-.card.jesus h2 { color: #b8860b; }
-.card.jesus:hover { background: #fffaf0; }
-
-.card.adam-eve { border-color: #5a8a5a; }
-.card.adam-eve h2 { color: #3a6347; }
-.card.adam-eve:hover { background: #f0f8e8; }
-
-.card.noah { border-color: #6b7a8f; }
-.card.noah h2 { color: #525f72; }
-.card.noah:hover { background: #f5f8fc; }
-
-.card.abraham { border-color: #b88630; }
-.card.abraham h2 { color: #9a7220; }
-.card.abraham:hover { background: #fffaf0; }
-
-.card.isaac-jacob { border-color: #8b7355; }
-.card.isaac-jacob h2 { color: #6b5a3f; }
-.card.isaac-jacob:hover { background: #f8f4eb; }
-
-footer { margin-top: 50px; padding-top: 20px; border-top: 2px solid #d8c8b8; color: #9a8a78; font-size: 0.85rem; }
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #705090;
+  box-shadow: 6px 6px 0 rgba(80,48,112,0.15);
+  background: #f8f4fc;
+}
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.card-name {
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+}
+.card-desc {
+  font-size: 0.85rem;
+  color: #8060a0;
+  line-height: 1.4;
+}
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  color: #9070b0;
+  font-size: 0.9rem;
+}
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>✨ Biblical Stories & Characters</h1>
-    <p class="subtitle">
-      Meet the people of faith who show us God's love, faithfulness, and grace.<br>
-      Click a card to hear their story.
-    </p>
-  </header>
 
-  <div class="grid">
-    <a href="mary-final.html" class="card mary">
-      <div class="card-icon">👩</div>
-      <h2>Mary</h2>
-      <p>Mother of Jesus — the faithful servant who said "Yes" to God</p>
+<header>
+  <h1>📖 Biblical Figures — Interactive Stories</h1>
+  <p class="subtitle">Walk with the faithful — hear their stories, learn from their lives</p>
+</header>
+
+<main>
+  <h2 class="section-title">Old Testament — Patriarchs & Early Humans</h2>
+  <div class="cards-grid">
+    <a href="adam-eve.html" class="card">
+      <div class="card-icon">👫</div>
+      <div class="card-name">Adam & Eve</div>
+      <div class="card-desc">The first family — created in God's image</div>
     </a>
-
-    <a href="joseph.html" class="card joseph">
-      <div class="card-icon">👨</div>
-      <h2>Joseph</h2>
-      <p>Carpenter & protector — faithful in dreams, in danger, and in quiet service</p>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">⚔️</div>
+      <div class="card-name">Cain & Abel</div>
+      <div class="card-desc">Coming soon</div>
     </a>
-
-    <a href="jesus.html" class="card jesus">
-      <div class="card-icon">👑</div>
-      <h2>Jesus</h2>
-      <p>Saviour & Lord — the Way, the Truth, and the Life, alive forevermore</p>
-    </a>
-
-    <a href="adam-eve.html" class="card adam-eve">
-      <div class="card-icon">🌿</div>
-      <h2>Adam & Eve</h2>
-      <p>The first family — created in God's image, and the beginning of His promise</p>
-    </a>
-
-    <a href="noah.html" class="card noah">
+    <a href="noah.html" class="card">
       <div class="card-icon">🌊</div>
-      <h2>Noah</h2>
-      <p>Faithful builder — the ark, the flood, and the rainbow promise for all generations</p>
+      <div class="card-name">Noah</div>
+      <div class="card-desc">The ark & the rainbow promise</div>
     </a>
-
-    <a href="abraham.html" class="card abraham">
+    <a href="abraham.html" class="card">
       <div class="card-icon">⭐</div>
-      <h2>Abraham</h2>
-      <p>Father of many nations — walked by faith, not by sight</p>
+      <div class="card-name">Abraham</div>
+      <div class="card-desc">Father of many nations</div>
     </a>
-
-    <a href="isaac-jacob.html" class="card isaac-jacob">
+    <a href="isaac-jacob.html" class="card">
       <div class="card-icon">👨‍👦</div>
-      <h2>Isaac & Jacob</h2>
-      <p>The promised line — sacrifice, dreams, wrestling, and God's enduring covenant</p>
+      <div class="card-name">Isaac & Jacob</div>
+      <div class="card-desc">The promise passed to twelve tribes</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">👑</div>
+      <div class="card-name">Joseph</div>
+      <div class="card-desc">Coming soon</div>
     </a>
   </div>
 
-  <footer>
-    Created to share stories of faith · All characters walk, speak, and share their hearts
-  </footer>
-</div>
+  <h2 class="section-title">Old Testament — Leaders, Kings & Prophets</h2>
+  <div class="cards-grid">
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">📜</div>
+      <div class="card-name">Moses</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">⚔️</div>
+      <div class="card-name">David</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">👑</div>
+      <div class="card-name">Solomon</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">🔥</div>
+      <div class="card-name">Elijah</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">💪</div>
+      <div class="card-name">Daniel</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">💍</div>
+      <div class="card-name">Esther</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+  </div>
+
+  <h2 class="section-title">New Testament</h2>
+  <div class="cards-grid">
+    <a href="mary-final.html" class="card">
+      <div class="card-icon">💜</div>
+      <div class="card-name">Mary</div>
+      <div class="card-desc">Faithful servant of the Lord</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">✝️</div>
+      <div class="card-name">Jesus</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">📢</div>
+      <div class="card-name">John the Baptist</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">🎣</div>
+      <div class="card-name">Peter</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+    <a href="#" class="card" style="opacity:0.6;cursor:not-allowed;">
+      <div class="card-icon">✍️</div>
+      <div class="card-name">Paul</div>
+      <div class="card-desc">Coming soon</div>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>MaryInTheBible — Interactive Biblical Education | Created to share faith & truth</p>
+</footer>
+
 </body>
 </html>
