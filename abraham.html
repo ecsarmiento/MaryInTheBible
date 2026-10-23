@@ -5,339 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abraham — Father of Many Nations</title>
 <style>
-/* ===== GLOBAL ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #f7f0e0 0%, #e8d8b8 100%);
+  background: linear-gradient(180deg, #f8f0e0 0%, #e8d0b0 100%);
   overflow: hidden;
   position: relative;
 }
-
-/* ===== STAGE ===== */
-.stage {
-  position: absolute;
-  bottom: 120px;
-  left: 0; right: 0;
-  height: 400px;
-  overflow: hidden;
+.home-btn {
+  position: absolute; top: 15px; left: 20px; z-index: 100;
+  background: #fff; padding: 8px 16px; border-radius: 6px;
+  border: 2px solid #a07030;
+  text-decoration: none; color: #704810; font-weight: bold;
 }
-
-/* ===== ABRAHAM CHARACTER ===== */
-.abraham {
-  position: absolute;
-  bottom: 20px;
-  width: 140px; height: 300px;
-  left: -200px;
-}
-
-@keyframes walkBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-.abraham.walking {
-  animation: walkBob 0.5s infinite ease-in-out;
-}
-
-@keyframes speakBreath {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-4px) scale(1.015); }
-}
-.abraham.speaking {
-  animation: speakBreath 1.8s infinite ease-in-out;
-}
-
-.part { position: absolute; }
-
-/* Head & Face */
-.head-wrapper {
-  position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 90px; height: 95px;
-}
-.hair-back {
-  width: 90px; height: 50px;
-  background: linear-gradient(180deg, #d4b898 0%, #b89a78 100%);
-  border-radius: 4px 4px 0 0;
-}
-.hair-front {
-  position: absolute; top: 0; left: 10px;
-  width: 70px; height: 24px;
-  background: #e0c8a8;
-  border-radius: 0 0 6px 6px;
-}
-.beard {
-  position: absolute; top: 40px; left: 12px;
-  width: 66px; height: 52px;
-  background: linear-gradient(180deg, #e8d0b0 0%, #d0b088 100%);
-  border-radius: 4px 4px 8px 8px;
-  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-}
-.face {
-  position: absolute; top: 18px; left: 15px;
-  width: 60px; height: 42px;
-  background: #e6c9a8;
-  border-radius: 2px;
-}
-.eyes {
-  position: absolute; top: 24px; left: 0; width: 100%;
-  display: flex; justify-content: center; gap: 14px;
-}
-.eye {
-  width: 9px; height: 9px;
-  background: #3a2a1a;
-  border-radius: 50%;
-}
-.mouth {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  width: 15px; height: 6px;
-  background: #9a6b4a;
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s;
-}
-.abraham.speaking .mouth {
-  height: 9px; border-radius: 50%;
-}
-
-/* Robe — Desert shepherd style */
-.robe {
-  position: absolute;
-  top: 85px; left: 50%; transform: translateX(-50%);
-  width: 110px; height: 210px;
-  background: linear-gradient(180deg, #b88630 0%, #9a7220 50%, #7a5a18 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
-  border: 3px solid #5a4210;
-}
-.robe-inner {
-  position: absolute;
-  top: 12px; left: 10px; right: 10px; bottom: 0;
-  background: linear-gradient(180deg, #d4a044 0%, #b88630 100%);
-  opacity: 0.4;
-}
-.cloak {
-  position: absolute;
-  top: 90px; left: 50%; transform: translateX(-50%);
-  width: 118px; height: 200px;
-  background: linear-gradient(180deg, #e0c080 0%, #d4a855 100%);
-  clip-path: polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%);
-  border: 3px solid #b88630;
-  opacity: 0.4;
-}
-
-/* Arms */
-.arm-left, .arm-right {
-  position: absolute;
-  top: 105px;
-  width: 24px; height: 85px;
-  background: #9a7220;
-  border: 2px solid #5a4210;
-  transform-origin: top center;
-}
-.arm-left { left: 10px; transform: rotate(-10deg); }
-.arm-right { right: 10px; transform: rotate(10deg); }
-.abraham.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
-.abraham.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
-@keyframes armSwingLeft {
-  from { transform: rotate(-10deg); }
-  to   { transform: rotate(5deg); }
-}
-@keyframes armSwingRight {
-  from { transform: rotate(10deg); }
-  to   { transform: rotate(-5deg); }
-}
-
-/* Ground — Sand/desert feel */
-.ground {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-  background: repeating-linear-gradient(90deg, #d4b888 0 40px, #c4a878 40px 80px);
-}
-
-/* ===== SPEECH BOX ===== */
-.speech-container {
-  position: absolute;
-  top: 30px; left: 50%; transform: translateX(-50%);
-  background: #fff;
-  border: 4px solid #b88630;
-  border-radius: 8px;
-  padding: 22px;
-  width: 90%; max-width: 550px;
-  box-shadow: 6px 6px 0 rgba(180, 130, 30, 0.2);
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
+.home-btn:hover { background: #faf0e0; }
+.stage { position: absolute; bottom: 100px; left: 0; right: 0; height: 400px; overflow: hidden; }
+.abraham { position: absolute; bottom: 20px; width: 130px; height: 300px; left: -200px; }
+@keyframes walkBob { 0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);} }
+.abraham.walking{animation:walkBob 0.5s infinite ease-in-out;}
+@keyframes speakBreath { 0%,100%{transform:scale(1);}50%{transform:scale(1.02);} }
+.abraham.speaking{animation:speakBreath 1.8s infinite ease-in-out;}
+.head-wrapper { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 85px; height: 90px; }
+.hair { width: 85px; height: 38px; background: linear-gradient(180deg, #b89060 0%, #987040 100%); border-radius: 50% 50% 0 0; }
+.beard { position: absolute; top: 48px; left: 8px; width: 70px; height: 52px; background: linear-gradient(180deg, #c8a070 0%, #a88050 100%); border-radius: 10px; clip-path: polygon(10% 0,90% 0,100% 100%,0 100%); }
+.face { position: absolute; top: 18px; left: 12px; width: 60px; height: 45px; background: #e8c8a0; border-radius: 4px; }
+.eyes { position: absolute; top: 24px; width: 100%; display: flex; justify-content: center; gap: 14px; }
+.eye { width: 9px; height: 9px; background: #3a2010; border-radius: 50%; }
+.mouth { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 16px; height: 7px; background: #806040; border-radius: 0 0 10px 10px; transition: all 0.3s; }
+.abraham.speaking .mouth { height: 10px; border-radius: 50%; }
+.robe { position: absolute; top: 85px; left: 50%; transform: translateX(-50%); width: 105px; height: 210px; background: linear-gradient(180deg, #c09050 0%, #a07030 50%, #805820 100%); clip-path: polygon(8% 0,92% 0,100% 100%,0 100%); border: 3px solid #604018; }
+.ground { position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: repeating-linear-gradient(90deg, #d8b888 0 40px, #c09860 40px 80px); }
+.speech-container { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: #fff; border: 4px solid #a07030; border-radius: 8px; padding: 20px; width: 90%; max-width: 550px; box-shadow: 6px 6px 0 rgba(160,112,48,0.15); opacity: 0; transition: opacity 0.8s ease; z-index: 10; }
 .speech-container.visible { opacity: 1; }
-
-.speech-text {
-  font-size: 1.05rem; line-height: 1.7; color: #4a3a20;
-  min-height: 80px; padding: 14px;
-  background: #fffaf0; border-radius: 4px; border: 2px solid #f0e0b8;
-  margin-bottom: 15px;
-}
+.speech-text { font-size: 1.05rem; line-height: 1.7; color: #503010; min-height: 80px; padding: 14px; background: #faf0e0; border-radius: 4px; border: 2px solid #e0c090; margin-bottom: 15px; }
 .controls { display: flex; gap: 12px; flex-wrap: wrap; }
-button {
-  padding: 12px 24px; font-size: 1rem; font-weight: bold;
-  border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s;
-}
-#startBtn { background: #b88630; color: #fff; }
-#startBtn:hover { background: #9a7220; transform: translateY(-2px); }
-#resetBtn { background: #d4a855; color: #3a2a10; }
-#resetBtn:hover { background: #b88630; transform: translateY(-2px); }
-.voice-status { margin-top: 12px; font-size: 0.9rem; color: #777; }
-h3 { color: #9a7220; margin-bottom: 10px; }
+button { padding: 12px 24px; font-size: 1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s; }
+#startBtn { background: #a07030; color: #fff; }
+#startBtn:hover { background: #805820; transform: translateY(-2px); }
+#resetBtn { background: #c09860; color: #fff; }
+#resetBtn:hover { background: #a07848; transform: translateY(-2px); }
+.voice-status { margin-top: 12px; font-size: 0.9rem; color: #666; }
+h3 { color: #805820; margin-bottom: 10px; }
 </style>
 </head>
 <body>
-  
-<a href="index.html" style="position: absolute; top: 15px; left: 20px; z-index: 100; 
-   background: #fff; padding: 8px 16px; border-radius: 6px; border: 2px solid #b89a6d;
-   text-decoration: none; color: #5a3f54; font-weight: bold; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">
-  🏠 Home
-</a>
-  
+<a href="index.html" class="home-btn">🏠 Home</a>
 <div class="speech-container" id="speechBox">
   <h3>Abraham — Father of Many Nations</h3>
-  <p class="speech-text" id="speechText">I am ready to speak. Click below to begin.</p>
+  <p class="speech-text" id="speechText">God called me to leave everything behind. Click to hear how faith made a way.</p>
   <div class="controls">
     <button id="startBtn">🎙️ Begin Story</button>
     <button id="resetBtn">🔄 Restart</button>
   </div>
   <p class="voice-status" id="voiceStatus">Status: Ready</p>
 </div>
-
 <div class="stage">
   <div class="abraham" id="abraham">
     <div class="head-wrapper">
-      <div class="hair-back"></div>
-      <div class="hair-front"></div>
+      <div class="hair"></div>
       <div class="face">
-        <div class="eyes">
-          <div class="eye"></div>
-          <div class="eye"></div>
-        </div>
+        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
         <div class="mouth"></div>
       </div>
       <div class="beard"></div>
     </div>
-    <div class="cloak"></div>
-    <div class="robe">
-      <div class="robe-inner"></div>
-    </div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
+    <div class="robe"></div>
   </div>
 </div>
-
 <div class="ground"></div>
-
 <script>
-const abrahamScript = [
-  "Peace be with you. I am Abraham, called by God to leave my home.",
-  "I lived in Ur of the Chaldeans, settled and comfortable — until the Lord spoke.",
-  "He said: 'Leave your country and your people. Go to the land I will show you.'",
-  "He promised: 'I will make you into a great nation. I will bless you, and all peoples on earth will be blessed through you.'",
-  "I did not know where I was going, but I trusted. I packed my things, and I went.",
-  "I walked by faith, not by sight. I pitched tents, I built altars, I followed God.",
-  "Years passed. I grew old. Sarah grew old. Yet God's promise remained sure.",
-  "He renewed the covenant: 'Look up at the stars — so numerous will your descendants be.'",
-  "I believed God, and it was credited to me as righteousness.",
-  "In time, Isaac was born — the son of promise, a gift from God.",
-  "Then God tested me: 'Take your son, your only son, and offer him on the mountain.'",
-  "I obeyed. I trusted that even from death God would provide and keep his word.",
-  "At the last moment, the angel called — and a ram was provided in the thicket.",
-  "God has provided. That place is called: The Lord Will Provide.",
-  "My life shows this: faith means moving forward when you cannot see the end.",
-  "God's promises do not depend on your age or your strength — they depend on his faithfulness.",
-  "He is your God too. Trust him, and he will lead you home."
-];
-
-const synth = window.speechSynthesis;
-const abraham = document.getElementById('abraham');
-const speechBox = document.getElementById('speechBox');
-const speechText = document.getElementById('speechText');
-const startBtn = document.getElementById('startBtn');
-const resetBtn = document.getElementById('resetBtn');
-const voiceStatus = document.getElementById('voiceStatus');
-
-let currentPart = 0;
-let abrahamVoice = null;
-const STAGE_CENTER = window.innerWidth / 2 - 70;
-const STAGE_RIGHT = window.innerWidth + 100;
-
-function loadVoices() {
-  const voices = synth.getVoices();
-  abrahamVoice = voices.find(v => 
-    (v.lang === 'en-US' || v.lang === 'en-GB') && 
-    v.name.toLowerCase().includes('male')
-  ) || voices.find(v => v.lang === 'en-US') || voices[0];
-  voiceStatus.textContent = `Voice: ${(abrahamVoice?.name || 'Default').slice(0,25)}… | Ready`;
-}
-synth.onvoiceschanged = loadVoices;
-loadVoices();
-
-function moveToCenter() {
-  abraham.classList.add('walking');
-  abraham.style.transition = 'left 2.5s ease-in-out';
-  abraham.style.left = `${STAGE_CENTER}px`;
-
-  setTimeout(() => {
-    abraham.classList.remove('walking');
-    abraham.classList.add('speaking');
-    speechBox.classList.add('visible');
-    speakNext();
-  }, 2500);
-}
-
-function speakNext() {
-  if (currentPart >= abrahamScript.length) {
-    endSpeaking();
-    return;
+document.addEventListener('DOMContentLoaded', function(){
+  const script = [
+    "I was born in Ur of the Chaldeans — a land far to the east. My name was Abram then.",
+    "God spoke: 'Leave your country, your people, and your father's household. Go to the land I will show you.'",
+    "'I will make you into a great nation, and I will bless you. I will make your name great, and you will be a blessing.'",
+    "'All peoples on earth will be blessed through you.'",
+    "I was seventy-five. I did not know where I was going — but I trusted God. I set out, just as he told me.",
+    "I came to the land of Canaan. God appeared again: 'To your offspring I will give this land.'",
+    "Years passed. I had no child. But God said: 'Look up at the sky and count the stars — so shall your descendants be.'",
+    "I believed the Lord, and he credited it to me as righteousness.",
+    "My name was changed to Abraham — father of many nations. Sarah's name became Sarah — princess.",
+    "At last, in our old age, Isaac was born. The child of promise — joy and laughter in our home.",
+    "Then God tested me: 'Take your son, your only son, whom you love — Isaac — and sacrifice him on the mountain I will show you.'",
+    "I did not understand. But I obeyed. We climbed the mountain. I bound my son and raised the knife.",
+    "The angel called: 'Abraham, stop! Do not lay a hand on the boy. Now I know you fear God — you have not withheld your only son.'",
+    "A ram was caught in the thicket — provided by God. We worshipped: 'The Lord Will Provide.'",
+    "God swore by himself: 'Because you have done this, I will surely bless you. Your descendants will be blessed, and all nations on earth will be blessed through your offspring.'",
+    "Jesus is that Offspring. Through him, God's blessing reaches you. Walk by faith, not by sight."
+  ];
+  const synth = window.speechSynthesis;
+  const abraham = document.getElementById('abraham');
+  const speechBox = document.getElementById('speechBox');
+  const speechText = document.getElementById('speechText');
+  const startBtn = document.getElementById('startBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let currentPart = 0, voice = null;
+  const CENTER = window.innerWidth/2 - 65;
+  const EXIT = window.innerWidth + 200;
+  function loadVoices(){
+    const v = synth.getVoices();
+    voice = v.find(x=>x.lang.startsWith('en'))||v[0];
+    voiceStatus.textContent = `Voice: ${(voice?.name||'Default').slice(0,25)}… | Ready`;
   }
-
-  const text = abrahamScript[currentPart];
-  speechText.textContent = text;
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.voice = abrahamVoice;
-  utterance.rate = 0.8;
-  utterance.pitch = 0.9;
-  utterance.volume = 1.0;
-
-  utterance.onstart = () => {
-    voiceStatus.textContent = `Speaking — Part ${currentPart+1}/${abrahamScript.length}`;
-  };
-  utterance.onend = () => {
-    currentPart++;
-    setTimeout(speakNext, 2000);
-  };
-
-  synth.speak(utterance);
-}
-
-function endSpeaking() {
-  abraham.classList.remove('speaking');
-  speechText.textContent = "The Lord will provide. Walk by faith, and he will lead you all the way.";
-  voiceStatus.textContent = "Finished — Abraham departs";
-
-  setTimeout(() => {
+  synth.onvoiceschanged = loadVoices; loadVoices();
+  function begin(){
     abraham.classList.add('walking');
     abraham.style.transition = 'left 2.5s ease-in-out';
-    abraham.style.left = `${STAGE_RIGHT}px`;
-  }, 3000);
-}
-
-function resetAll() {
-  synth.cancel();
-  currentPart = 0;
-  abraham.classList.remove('walking', 'speaking');
-  abraham.style.transition = 'none';
-  abraham.style.left = '-200px';
-  speechBox.classList.remove('visible');
-  speechText.textContent = "I am ready to speak. Click below to begin.";
-  voiceStatus.textContent = "Status: Ready";
-}
-
-startBtn.addEventListener('click', moveToCenter);
-resetBtn.addEventListener('click', resetAll);
+    abraham.style.left = CENTER+'px';
+    setTimeout(()=>{abraham.classList.remove('walking');abraham.classList.add('speaking');speechBox.classList.add('visible');speakNext();},2500);
+  }
+  function speakNext(){
+    if(currentPart>=script.length){end();return;}
+    speechText.textContent = script[currentPart];
+    const u = new SpeechSynthesisUtterance(script[currentPart]);
+    u.voice = voice; u.rate=0.82; u.pitch=0.95; u.volume=1;
+    u.onstart=()=>voiceStatus.textContent=`Speaking — ${currentPart+1}/${script.length}`;
+    u.onend=()=>{currentPart++;setTimeout(speakNext,2200);};
+    synth.speak(u);
+  }
+  function end(){
+    abraham.classList.remove('speaking');
+    speechText.textContent = "Faith is being sure of what we hope for and certain of what we do not see.";
+    voiceStatus.textContent = "Finished — The promise continues";
+    setTimeout(()=>{abraham.classList.add('walking');abraham.style.transition='left 2.5s ease-in-out';abraham.style.left=EXIT+'px';},3500);
+  }
+  function reset(){
+    synth.cancel(); currentPart=0;
+    abraham.classList.remove('walking','speaking');
+    abraham.style.transition='none'; abraham.style.left='-200px';
+    speechBox.classList.remove('visible');
+    speechText.textContent="God called me to leave everything behind. Click to hear how faith made a way.";
+    voiceStatus.textContent="Status: Ready";
+  }
+  startBtn.addEventListener('click',begin);
+  resetBtn.addEventListener('click',reset);
+});
 </script>
 </body>
 </html>
