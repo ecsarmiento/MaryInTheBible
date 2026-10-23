@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joseph — Earthly Father & Protector</title>
+<style>
+/* ===== GLOBAL ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f2eeda 0%, #e6dfc8 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== STAGE ===== */
+.stage {
+  position: absolute;
+  bottom: 120px;
+  left: 0; right: 0;
+  height: 400px;
+  overflow: hidden;
+}
+
+/* ===== JOSEPH CHARACTER ===== */
+.joseph {
+  position: absolute;
+  bottom: 20px;
+  width: 140px; height: 290px;
+  left: -200px; /* Start off-screen left */
+}
+
+/* Walking movement */
+@keyframes walkBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.joseph.walking {
+  animation: walkBob 0.5s infinite ease-in-out;
+}
+
+/* Speaking calm movement */
+@keyframes speakBreath {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.01); }
+}
+.joseph.speaking {
+  animation: speakBreath 2.0s infinite ease-in-out;
+}
+
+.part { position: absolute; }
+
+/* Head & Face */
+.head-wrapper {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 90px;
+}
+.hair-back {
+  width: 90px; height: 45px;
+  background: linear-gradient(180deg, #5c3a21 0%, #4a2e1a 100%);
+  border-radius: 4px 4px 0 0;
+}
+.hair-front {
+  position: absolute; top: 0; left: 10px;
+  width: 70px; height: 22px;
+  background: #6b4428;
+  border-radius: 0 0 6px 6px;
+}
+.beard {
+  position: absolute; top: 42px; left: 12px;
+  width: 66px; height: 48px;
+  background: linear-gradient(180deg, #8b603f 0%, #724f34 100%);
+  border-radius: 4px 4px 8px 8px;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+}
+.face {
+  position: absolute; top: 16px; left: 15px;
+  width: 60px; height: 42px;
+  background: #e8d4bc;
+  border-radius: 2px;
+}
+.eyes {
+  position: absolute; top: 22px; left: 0; width: 100%;
+  display: flex; justify-content: center; gap: 14px;
+}
+.eye {
+  width: 9px; height: 9px;
+  background: #2c2c2c;
+  border-radius: 50%;
+}
+.mouth {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  width: 16px; height: 6px;
+  background: #9a7254;
+  border-radius: 0 0 10px 10px;
+  transition: all 0.3s;
+}
+.joseph.speaking .mouth {
+  height: 9px; border-radius: 50%;
+}
+
+/* Robe — Earthly carpenter style */
+.robe {
+  position: absolute;
+  top: 85px; left: 50%; transform: translateX(-50%);
+  width: 110px; height: 200px;
+  background: linear-gradient(180deg, #8b6b3d 0%, #705630 50%, #5a4426 100%);
+  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+  border: 3px solid #4a361c;
+}
+.robe-inner {
+  position: absolute;
+  top: 12px; left: 10px; right: 10px; bottom: 0;
+  background: linear-gradient(180deg, #a07c48 0%, #8b6b3d 100%);
+  opacity: 0.5;
+}
+.cloak {
+  position: absolute;
+  top: 90px; left: 50%; transform: translateX(-50%);
+  width: 118px; height: 190px;
+  background: linear-gradient(180deg, #6b5a3f 0%, #5a4a34 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%);
+  border: 3px solid #4a3d28;
+  opacity: 0.7;
+}
+
+/* Arms */
+.arm-left, .arm-right {
+  position: absolute;
+  top: 105px;
+  width: 24px; height: 80px;
+  background: #705630;
+  border: 2px solid #4a361c;
+  transform-origin: top center;
+}
+.arm-left { left: 10px; transform: rotate(-12deg); }
+.arm-right { right: 10px; transform: rotate(12deg); }
+.joseph.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
+.joseph.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
+@keyframes armSwingLeft {
+  from { transform: rotate(-12deg); }
+  to   { transform: rotate(6deg); }
+}
+@keyframes armSwingRight {
+  from { transform: rotate(12deg); }
+  to   { transform: rotate(-6deg); }
+}
+
+/* Ground */
+.ground {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+  background: repeating-linear-gradient(90deg, #8b7355 0 40px, #7a654c 40px 80px);
+}
+
+/* ===== SPEECH BOX ===== */
+.speech-container {
+  position: absolute;
+  top: 30px; left: 50%; transform: translateX(-50%);
+  background: #fff;
+  border: 4px solid #6b5a3f;
+  border-radius: 8px;
+  padding: 22px;
+  width: 90%; max-width: 550px;
+  box-shadow: 6px 6px 0 rgba(60, 45, 25, 0.2);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.speech-container.visible { opacity: 1; }
+
+.speech-text {
+  font-size: 1.05rem; line-height: 1.7; color: #423524;
+  min-height: 80px; padding: 14px;
+  background: #f8f2e8; border-radius: 4px; border: 2px solid #d9c8b8;
+  margin-bottom: 15px;
+}
+.controls { display: flex; gap: 12px; flex-wrap: wrap; }
+button {
+  padding: 12px 24px; font-size: 1rem; font-weight: bold;
+  border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s;
+}
+#startBtn { background: #6b5a3f; color: #fff; }
+#startBtn:hover { background: #5a4a34; transform: translateY(-2px); }
+#resetBtn { background: #b89a6d; color: #fff; }
+#resetBtn:hover { background: #9a7d58; transform: translateY(-2px); }
+.voice-status { margin-top: 12px; font-size: 0.9rem; color: #777; }
+h3 { color: #6b5a3f; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<div class="speech-container" id="speechBox">
+  <h3>Joseph — Faithful Carpenter & Father</h3>
+  <p class="speech-text" id="speechText">I am ready to speak. Click below to begin.</p>
+  <div class="controls">
+    <button id="startBtn">🎙️ Begin Story</button>
+    <button id="resetBtn">🔄 Restart</button>
+  </div>
+  <p class="voice-status" id="voiceStatus">Status: Ready</p>
+</div>
+
+<div class="stage">
+  <div class="joseph" id="joseph">
+    <div class="head-wrapper">
+      <div class="hair-back"></div>
+      <div class="hair-front"></div>
+      <div class="face">
+        <div class="eyes">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+      <div class="beard"></div>
+    </div>
+    <div class="cloak"></div>
+    <div class="robe">
+      <div class="robe-inner"></div>
+    </div>
+    <div class="arm-left"></div>
+    <div class="arm-right"></div>
+  </div>
+</div>
+
+<div class="ground"></div>
+
+<script>
+const josephScript = [
+  "Peace be with you. I am Joseph, a carpenter from Nazareth.",
+  "I was betrothed to Mary when God’s plan began to unfold.",
+  "When I learned she was with child, I was troubled — yet an angel came to me in a dream.",
+  "He said: 'Do not be afraid. Take Mary as your wife. The child is from the Holy Spirit.'",
+  "I trusted God completely. I took Mary into my home and protected her always.",
+  "We traveled far to Bethlehem, and there, Jesus was born — the Saviour of the world.",
+  "I watched over them. I provided, I worked, I guided, I loved them.",
+  "When danger came, we fled to Egypt. I kept them safe until it was time to return.",
+  "I taught Jesus the trade of carpentry. I saw him grow in grace and truth.",
+  "I am not his biological father — but I loved him as my own son.",
+  "My part was quiet, faithful, unseen — to serve, to protect, to obey.",
+  "Faithfulness does not always stand on a stage. It stands in daily trust and love.",
+  "May you also be faithful in what God has given you. Blessings to you."
+];
+
+const synth = window.speechSynthesis;
+const joseph = document.getElementById('joseph');
+const speechBox = document.getElementById('speechBox');
+const speechText = document.getElementById('speechText');
+const startBtn = document.getElementById('startBtn');
+const resetBtn = document.getElementById('resetBtn');
+const voiceStatus = document.getElementById('voiceStatus');
+
+let currentPart = 0;
+let josephVoice = null;
+const STAGE_CENTER = window.innerWidth / 2 - 70;
+const STAGE_RIGHT = window.innerWidth + 100;
+
+function loadVoices() {
+  const voices = synth.getVoices();
+  josephVoice = voices.find(v => 
+    (v.lang === 'en-US' || v.lang === 'en-GB') && 
+    v.name.toLowerCase().includes('male')
+  ) || voices.find(v => v.lang === 'en-US') || voices[0];
+  voiceStatus.textContent = `Voice: ${(josephVoice?.name || 'Default').slice(0,25)}… | Ready`;
+}
+synth.onvoiceschanged = loadVoices;
+loadVoices();
+
+function moveToCenter() {
+  joseph.classList.add('walking');
+  joseph.style.transition = 'left 2.5s ease-in-out';
+  joseph.style.left = `${STAGE_CENTER}px`;
+
+  setTimeout(() => {
+    joseph.classList.remove('walking');
+    joseph.classList.add('speaking');
+    speechBox.classList.add('visible');
+    speakNext();
+  }, 2500);
+}
+
+function speakNext() {
+  if (currentPart >= josephScript.length) {
+    endSpeaking();
+    return;
+  }
+
+  const text = josephScript[currentPart];
+  speechText.textContent = text;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.voice = josephVoice;
+  utterance.rate = 0.85;
+  utterance.pitch = 0.9;
+  utterance.volume = 1.0;
+
+  utterance.onstart = () => {
+    voiceStatus.textContent = `Speaking — Part ${currentPart+1}/${josephScript.length}`;
+  };
+  utterance.onend = () => {
+    currentPart++;
+    setTimeout(speakNext, 2000);
+  };
+
+  synth.speak(utterance);
+}
+
+function endSpeaking() {
+  joseph.classList.remove('speaking');
+  speechText.textContent = "Thank you for listening. Walk faithfully, as we did.";
+  voiceStatus.textContent = "Finished — Joseph departs";
+
+  setTimeout(() => {
+    joseph.classList.add('walking');
+    joseph.style.transition = 'left 2.5s ease-in-out';
+    joseph.style.left = `${STAGE_RIGHT}px`;
+  }, 3000);
+}
+
+function resetAll() {
+  synth.cancel();
+  currentPart = 0;
+  joseph.classList.remove('walking', 'speaking');
+  joseph.style.transition = 'none';
+  joseph.style.left = '-200px';
+  speechBox.classList.remove('visible');
+  speechText.textContent = "I am ready to speak. Click below to begin.";
+  voiceStatus.textContent = "Status: Ready";
+}
+
+startBtn.addEventListener('click', moveToCenter);
+resetBtn.addEventListener('click', resetAll);
+</script>
+</body>
+</html>
