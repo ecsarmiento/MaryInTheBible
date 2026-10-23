@@ -5,448 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Isaac & Jacob — The Promised Line</title>
 <style>
-/* ===== GLOBAL ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #f7f3e8 0%, #e9dfc8 100%);
+  background: linear-gradient(180deg, #f0f0f8 0%, #d8d8f0 100%);
   overflow: hidden;
   position: relative;
 }
-
-/* ===== STAGE ===== */
-.stage {
-  position: absolute;
-  bottom: 120px;
-  left: 0; right: 0;
-  height: 400px;
-  overflow: hidden;
+.home-btn {
+  position: absolute; top: 15px; left: 20px; z-index: 100;
+  background: #fff; padding: 8px 16px; border-radius: 6px;
+  border: 2px solid #7060c0;
+  text-decoration: none; color: #484090; font-weight: bold;
 }
-
-/* ===== SHARED CHARACTER STYLES ===== */
-.character {
-  position: absolute;
-  bottom: 20px;
-  width: 130px; height: 290px;
-}
-
-@keyframes walkBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-.walking {
-  animation: walkBob 0.5s infinite ease-in-out;
-}
-
-@keyframes speakBreath {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-4px) scale(1.015); }
-}
-.speaking {
-  animation: speakBreath 1.8s infinite ease-in-out;
-}
-
-.part { position: absolute; }
-
-/* ===== ISAAC ===== */
-.isaac { left: -180px; }
-.isaac .head-wrapper {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 85px; height: 90px;
-}
-.isaac .hair-back {
-  width: 85px; height: 48px;
-  background: linear-gradient(180deg, #d4a855 0%, #b88630 100%);
-  border-radius: 4px 4px 0 0;
-}
-.isaac .hair-front {
-  position: absolute; top: 0; left: 10px;
-  width: 65px; height: 24px;
-  background: #e0b865;
-  border-radius: 0 0 6px 6px;
-}
-.isaac .beard {
-  position: absolute; top: 42px; left: 12px;
-  width: 61px; height: 46px;
-  background: linear-gradient(180deg, #e8c888 0%, #d4a855 100%);
-  border-radius: 4px 4px 8px 8px;
-  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-}
-.isaac .face {
-  position: absolute; top: 16px; left: 12px;
-  width: 60px; height: 45px;
-  background: #f0d4a8;
-  border-radius: 2px;
-}
-.isaac .eyes {
-  position: absolute; top: 24px; left: 0; width: 100%;
-  display: flex; justify-content: center; gap: 14px;
-}
-.isaac .eye {
-  width: 9px; height: 9px;
-  background: #4a3010;
-  border-radius: 50%;
-}
-.isaac .mouth {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  width: 15px; height: 6px;
-  background: #a87830;
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s;
-}
-.isaac.speaking .mouth { height: 9px; border-radius: 50%; }
-
-.isaac .robe {
-  position: absolute; top: 85px; left: 50%; transform: translateX(-50%);
-  width: 100px; height: 200px;
-  background: linear-gradient(180deg, #d4a044 0%, #b88630 50%, #9a7220 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
-  border: 3px solid #7a5a18;
-}
-.isaac .robe-inner {
-  position: absolute; top: 12px; left: 10px; right: 10px; bottom: 0;
-  background: linear-gradient(180deg, #e0b865 0%, #d4a044 100%);
-  opacity: 0.4;
-}
-
-.isaac .arm-left, .isaac .arm-right {
-  position: absolute; top: 105px;
-  width: 22px; height: 80px;
-  background: #b88630;
-  border: 2px solid #7a5a18;
-  transform-origin: top center;
-}
-.isaac .arm-left { left: 8px; transform: rotate(-12deg); }
-.isaac .arm-right { right: 8px; transform: rotate(12deg); }
-.isaac.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
-.isaac.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
-
-/* ===== JACOB ===== */
-.jacob { left: -180px; }
-.jacob .head-wrapper {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 85px; height: 90px;
-}
-.jacob .hair-back {
-  width: 85px; height: 48px;
-  background: linear-gradient(180deg, #8b5a2b 0%, #6f4722 100%);
-  border-radius: 4px 4px 0 0;
-}
-.jacob .hair-front {
-  position: absolute; top: 0; left: 10px;
-  width: 65px; height: 24px;
-  background: #9a6635;
-  border-radius: 0 0 6px 6px;
-}
-.jacob .beard {
-  position: absolute; top: 42px; left: 12px;
-  width: 61px; height: 46px;
-  background: linear-gradient(180deg, #a07040 0%, #805830 100%);
-  border-radius: 4px 4px 8px 8px;
-  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-}
-.jacob .face {
-  position: absolute; top: 16px; left: 12px;
-  width: 60px; height: 45px;
-  background: #e6c9a8;
-  border-radius: 2px;
-}
-.jacob .eyes {
-  position: absolute; top: 24px; left: 0; width: 100%;
-  display: flex; justify-content: center; gap: 14px;
-}
-.jacob .eye {
-  width: 9px; height: 9px;
-  background: #3a2418;
-  border-radius: 50%;
-}
-.jacob .mouth {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  width: 15px; height: 6px;
-  background: #8b603f;
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s;
-}
-.jacob.speaking .mouth { height: 9px; border-radius: 50%; }
-
-.jacob .robe {
-  position: absolute; top: 85px; left: 50%; transform: translateX(-50%);
-  width: 100px; height: 200px;
-  background: linear-gradient(180deg, #5a7090 0%, #485a78 50%, #364660 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
-  border: 3px solid #2a3850;
-}
-.jacob .robe-inner {
-  position: absolute; top: 12px; left: 10px; right: 10px; bottom: 0;
-  background: linear-gradient(180deg, #6a82a8 0%, #5a7090 100%);
-  opacity: 0.4;
-}
-
-.jacob .arm-left, .jacob .arm-right {
-  position: absolute; top: 105px;
-  width: 22px; height: 80px;
-  background: #485a78;
-  border: 2px solid #2a3850;
-  transform-origin: top center;
-}
-.jacob .arm-left { left: 8px; transform: rotate(-12deg); }
-.jacob .arm-right { right: 8px; transform: rotate(12deg); }
-.jacob.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
-.jacob.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
-
-@keyframes armSwingLeft {
-  from { transform: rotate(-12deg); }
-  to   { transform: rotate(5deg); }
-}
-@keyframes armSwingRight {
-  from { transform: rotate(12deg); }
-  to   { transform: rotate(-5deg); }
-}
-
-/* ===== GROUND ===== */
-.ground {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-  background: repeating-linear-gradient(90deg, #d4b888 0 40px, #c4a878 40px 80px);
-}
-
-/* ===== SPEECH BOX ===== */
-.speech-container {
-  position: absolute;
-  top: 30px; left: 50%; transform: translateX(-50%);
-  background: #fff;
-  border: 4px solid #b88630;
-  border-radius: 8px;
-  padding: 22px;
-  width: 90%; max-width: 580px;
-  box-shadow: 6px 6px 0 rgba(180, 130, 30, 0.15);
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
+.home-btn:hover { background: #f4f4fc; }
+.stage { position: absolute; bottom: 100px; left: 0; right: 0; height: 400px; overflow: hidden; }
+.duo { position: absolute; bottom: 20px; width: 260px; height: 300px; left: -300px; }
+@keyframes walkBob { 0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);} }
+.duo.walking{animation:walkBob 0.5s infinite ease-in-out;}
+@keyframes speakBreath { 0%,100%{transform:scale(1);}50%{transform:scale(1.02);} }
+.duo.speaking{animation:speakBreath 1.8s infinite ease-in-out;}
+.person { position: absolute; bottom: 0; width: 110px; height: 280px; }
+.person-left { left: 5px; }
+.person-right { right: 5px; }
+.head { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 75px; border-radius: 50%; }
+.body { position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90px; height: 210px; clip-path: polygon(10% 0,90% 0,100% 100%,0 100%); }
+.eyes { position: absolute; top: 28px; width: 100%; display: flex; justify-content: center; gap: 12px; }
+.eye { width: 8px; height: 8px; background: #222; border-radius: 50%; }
+.mouth { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 14px; height: 6px; background: #7060a0; border-radius: 0 0 10px 10px; transition: all 0.3s; }
+.speaking .mouth { height: 9px; border-radius: 50%; }
+.isaac-head { background: #e8c8a0; }
+.isaac-body { background: linear-gradient(180deg, #9080d0 0%, #7060b0 100%); border: 3px solid #504090; }
+.jacob-head { background: #d8b898; }
+.jacob-body { background: linear-gradient(180deg, #7060c0 0%, #5040a0 100%); border: 3px solid #383080; }
+.ground { position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: repeating-linear-gradient(90deg, #b8b8e0 0 40px, #9898c8 40px 80px); }
+.speech-container { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: #fff; border: 4px solid #7060c0; border-radius: 8px; padding: 20px; width: 90%; max-width: 550px; box-shadow: 6px 6px 0 rgba(112,96,192,0.15); opacity: 0; transition: opacity 0.8s ease; z-index: 10; }
 .speech-container.visible { opacity: 1; }
-
-.speech-text {
-  font-size: 1.05rem; line-height: 1.7; color: #4a3a20;
-  min-height: 80px; padding: 14px;
-  background: #fffaf0; border-radius: 4px; border: 2px solid #f0e0b8;
-  margin-bottom: 15px;
-}
-.speaker-tag {
-  font-weight: bold; margin-bottom: 8px; display: block;
-}
-.isaac-tag { color: #b88630; }
-.jacob-tag { color: #485a78; }
+.speech-text { font-size: 1.05rem; line-height: 1.7; color: #383080; min-height: 80px; padding: 14px; background: #f4f4fc; border-radius: 4px; border: 2px solid #c8c8f0; margin-bottom: 15px; }
 .controls { display: flex; gap: 12px; flex-wrap: wrap; }
-button {
-  padding: 12px 24px; font-size: 1rem; font-weight: bold;
-  border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s;
-}
-#startBtn { background: #b88630; color: #fff; }
-#startBtn:hover { background: #9a7220; transform: translateY(-2px); }
-#resetBtn { background: #5a7090; color: #fff; }
-#resetBtn:hover { background: #485a78; transform: translateY(-2px); }
-.voice-status { margin-top: 12px; font-size: 0.9rem; color: #777; }
-h3 { color: #9a7220; margin-bottom: 10px; }
+button { padding: 12px 24px; font-size: 1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s; }
+#startBtn { background: #7060c0; color: #fff; }
+#startBtn:hover { background: #5848a0; transform: translateY(-2px); }
+#resetBtn { background: #9890d0; color: #fff; }
+#resetBtn:hover { background: #7870b0; transform: translateY(-2px); }
+.voice-status { margin-top: 12px; font-size: 0.9rem; color: #666; }
+h3 { color: #5848a0; margin-bottom: 10px; }
 </style>
 </head>
 <body>
-  
-<a href="index.html" style="position: absolute; top: 15px; left: 20px; z-index: 100; 
-   background: #fff; padding: 8px 16px; border-radius: 6px; border: 2px solid #b89a6d;
-   text-decoration: none; color: #5a3f54; font-weight: bold; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">
-  🏠 Home
-</a>
-  
+<a href="index.html" class="home-btn">🏠 Home</a>
 <div class="speech-container" id="speechBox">
   <h3>Isaac & Jacob — The Promised Line</h3>
-  <p class="speech-text" id="speechText">We are ready to speak. Click below to begin.</p>
+  <p class="speech-text" id="speechText">The promise passed from father to son. Click to hear our story.</p>
   <div class="controls">
     <button id="startBtn">🎙️ Begin Story</button>
     <button id="resetBtn">🔄 Restart</button>
   </div>
   <p class="voice-status" id="voiceStatus">Status: Ready</p>
 </div>
-
 <div class="stage">
-  <!-- Isaac -->
-  <div class="character isaac" id="isaac">
-    <div class="head-wrapper">
-      <div class="hair-back"></div>
-      <div class="hair-front"></div>
-      <div class="face">
-        <div class="eyes">
-          <div class="eye"></div>
-          <div class="eye"></div>
-        </div>
+  <div class="duo" id="duo">
+    <div class="person person-left">
+      <div class="head isaac-head">
+        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
         <div class="mouth"></div>
       </div>
-      <div class="beard"></div>
+      <div class="body isaac-body"></div>
     </div>
-    <div class="robe"><div class="robe-inner"></div></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
-  </div>
-
-  <!-- Jacob -->
-  <div class="character jacob" id="jacob">
-    <div class="head-wrapper">
-      <div class="hair-back"></div>
-      <div class="hair-front"></div>
-      <div class="face">
-        <div class="eyes">
-          <div class="eye"></div>
-          <div class="eye"></div>
-        </div>
+    <div class="person person-right">
+      <div class="head jacob-head">
+        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
         <div class="mouth"></div>
       </div>
-      <div class="beard"></div>
+      <div class="body jacob-body"></div>
     </div>
-    <div class="robe"><div class="robe-inner"></div></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
   </div>
 </div>
-
 <div class="ground"></div>
-
 <script>
-const dialogue = [
-  { speaker: 'isaac', text: "Greetings. I am Isaac — the son of promise, born to Abraham and Sarah in their old age." },
-  { speaker: 'isaac', text: "On Mount Moriah, my father bound me — but God provided a ram instead. He showed me that he is the Lord who sees and saves." },
-  { speaker: 'isaac', text: "I married Rebekah, and God blessed our home. We prayed, and we were given twin sons: Esau and me, Jacob." },
-  { speaker: 'jacob', text: "I was born second, but I longed for the blessing God had promised our family. I sought it — sometimes in my own way." },
-  { speaker: 'jacob', text: "I left home, running from trouble. Alone in the night, I saw a ladder reaching heaven — and God spoke to me." },
-  { speaker: 'jacob', text: "He said: 'I am the God of Abraham and Isaac. The land will be yours, and your descendants will be like dust on the earth.'" },
-  { speaker: 'jacob', text: "I wrestled with a man all night — it was God himself. He touched my hip, and I would not let go until he blessed me." },
-  { speaker: 'jacob', text: "He renamed me: Israel — one who struggles with God and prevails. I limped away, but I carried his name forever." },
-  { speaker: 'isaac', text: "God's promise did not depend on perfection. It depended on his faithfulness — and it passed to Jacob, and to his children." },
-  { speaker: 'jacob', text: "I had twelve sons, and from them came the twelve tribes of Israel. We went down to Egypt — and God was with us there too." },
-  { speaker: 'isaac', text: "The line continues. From Abraham, through me, through Jacob — the Saviour would one day be born." },
-  { speaker: 'jacob', text: "You are part of this story too. God's promise is for you — not because you are worthy, but because he is faithful." },
-  { speaker: 'isaac', text: "Trust him. He will provide. He will keep you. His word stands forever." },
-  { speaker: 'jacob', text: "Hold on to God. Even when you struggle, even when you stumble — he will not let you go." }
-];
-
-const synth = window.speechSynthesis;
-const isaac = document.getElementById('isaac');
-const jacob = document.getElementById('jacob');
-const speechBox = document.getElementById('speechBox');
-const speechText = document.getElementById('speechText');
-const startBtn = document.getElementById('startBtn');
-const resetBtn = document.getElementById('resetBtn');
-const voiceStatus = document.getElementById('voiceStatus');
-
-let currentPart = 0;
-let isaacVoice = null;
-let jacobVoice = null;
-const ISAAC_CENTER = window.innerWidth / 2 - 110;
-const JACOB_CENTER = window.innerWidth / 2 + 20;
-const EXIT_POS = window.innerWidth + 150;
-
-function loadVoices() {
-  const voices = synth.getVoices();
-  isaacVoice = voices.find(v => 
-    (v.lang === 'en-US' || v.lang === 'en-GB') && 
-    v.name.toLowerCase().includes('male')
-  ) || voices.find(v => v.lang === 'en-US') || voices[0];
-  
-  jacobVoice = voices.find(v => 
-    (v.lang === 'en-US' || v.lang === 'en-GB') && 
-    v.name.toLowerCase().includes('male')
-  ) || voices.find(v => v.lang === 'en-GB') || voices[0];
-  
-  voiceStatus.textContent = `Voices ready | Status: Ready`;
-}
-synth.onvoiceschanged = loadVoices;
-loadVoices();
-
-function moveToCenter() {
-  isaac.classList.add('walking');
-  jacob.classList.add('walking');
-  
-  isaac.style.transition = 'left 2.5s ease-in-out';
-  jacob.style.transition = 'left 2.5s ease-in-out';
-  
-  isaac.style.left = `${ISAAC_CENTER}px`;
-  jacob.style.left = `${JACOB_CENTER}px`;
-
-  setTimeout(() => {
-    isaac.classList.remove('walking');
-    jacob.classList.remove('walking');
-    speechBox.classList.add('visible');
-    speakNext();
-  }, 2500);
-}
-
-function speakNext() {
-  if (currentPart >= dialogue.length) {
-    endSpeaking();
-    return;
+document.addEventListener('DOMContentLoaded', function(){
+  const script = [
+    "Isaac: I am the son of promise — born to Abraham and Sarah when they were far too old.",
+    "My father raised me on Mount Moriah. God provided a ram, and I was spared — a picture of the sacrifice to come.",
+    "I married Rebekah. We had twin sons: Esau, born first, and Jacob, grasping his heel.",
+    "Jacob: My name means 'he deceives.' I was not born first — but I knew the birthright carried God's blessing.",
+    "I bought it from Esau for a bowl of stew. With my mother's help, I received my father's blessing. I fled in fear.",
+    "Alone and running, I slept on a rock. I saw a ladder reaching to heaven — angels ascending and descending.",
+    "God stood above it and said: 'I am the Lord, the God of your father Abraham and Isaac. I will give you this land.'",
+    "'Your descendants will be like the dust of the earth. All peoples on earth will be blessed through you and your offspring.'",
+    "I wrestled all night with a mysterious Man — until daybreak. He touched my hip and I walked with a limp forever.",
+    "He said: 'Your name will no longer be Jacob. You have struggled with God and with men and have prevailed — you shall be Israel.'",
+    "I met Esau again — not in anger, but with embrace. God had softened his heart.",
+    "I had twelve sons — Reuben, Simeon, Levi, Judah, Dan, Naphtali, Gad, Asher, Issachar, Zebulun, Joseph, and Benjamin.",
+    "From these twelve came the twelve tribes of Israel — the people through whom God would reveal himself to the world.",
+    "Isaac: The promise did not depend on perfection —",
+    "Jacob: It depended on God, who is faithful even when we are not.",
+    "Together: From our line came King David, and from David — Jesus, the Saviour of the world."
+  ];
+  const synth = window.speechSynthesis;
+  const duo = document.getElementById('duo');
+  const speechBox = document.getElementById('speechBox');
+  const speechText = document.getElementById('speechText');
+  const startBtn = document.getElementById('startBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let currentPart = 0, voice = null;
+  const CENTER = window.innerWidth/2 - 130;
+  const EXIT = window.innerWidth + 300;
+  function loadVoices(){
+    const v = synth.getVoices();
+    voice = v.find(x=>x.lang.startsWith('en'))||v[0];
+    voiceStatus.textContent = `Voice: ${(voice?.name||'Default').slice(0,25)}… | Ready`;
   }
-
-  const { speaker, text } = dialogue[currentPart];
-  
-  speechText.innerHTML = `
-    <span class="speaker-tag ${speaker}-tag">${speaker === 'isaac' ? 'Isaac' : 'Jacob'}:</span>
-    ${text}
-  `;
-  
-  if (speaker === 'isaac') {
-    jacob.classList.remove('speaking');
-    isaac.classList.add('speaking');
-  } else {
-    isaac.classList.remove('speaking');
-    jacob.classList.add('speaking');
+  synth.onvoiceschanged = loadVoices; loadVoices();
+  function begin(){
+    duo.classList.add('walking');
+    duo.style.transition = 'left 2.5s ease-in-out';
+    duo.style.left = CENTER+'px';
+    setTimeout(()=>{duo.classList.remove('walking');duo.classList.add('speaking');speechBox.classList.add('visible');speakNext();},2500);
   }
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.voice = speaker === 'isaac' ? isaacVoice : jacobVoice;
-  utterance.rate = speaker === 'isaac' ? 0.8 : 0.85;
-  utterance.pitch = speaker === 'isaac' ? 0.92 : 1.0;
-  utterance.volume = 1.0;
-
-  utterance.onstart = () => {
-    voiceStatus.textContent = `${speaker === 'isaac' ? 'Isaac' : 'Jacob'} speaking — ${currentPart+1}/${dialogue.length}`;
-  };
-  utterance.onend = () => {
-    currentPart++;
-    setTimeout(speakNext, 2000);
-  };
-
-  synth.speak(utterance);
-}
-
-function endSpeaking() {
-  isaac.classList.remove('speaking');
-  jacob.classList.remove('speaking');
-  speechText.textContent = "God's promise endures forever. He is faithful to you.";
-  voiceStatus.textContent = "Finished — departing together";
-
-  setTimeout(() => {
-    isaac.classList.add('walking');
-    jacob.classList.add('walking');
-    isaac.style.transition = 'left 2.5s ease-in-out';
-    jacob.style.transition = 'left 2.5s ease-in-out';
-    isaac.style.left = `${EXIT_POS}px`;
-    jacob.style.left = `${EXIT_POS + 60}px`;
-  }, 3000);
-}
-
-function resetAll() {
-  synth.cancel();
-  currentPart = 0;
-  isaac.classList.remove('walking', 'speaking');
-  jacob.classList.remove('walking', 'speaking');
-  isaac.style.transition = 'none';
-  jacob.style.transition = 'none';
-  isaac.style.left = '-180px';
-  jacob.style.left = '-180px';
-  speechBox.classList.remove('visible');
-  speechText.textContent = "We are ready to speak. Click below to begin.";
-  voiceStatus.textContent = "Status: Ready";
-}
-
-startBtn.addEventListener('click', moveToCenter);
-resetBtn.addEventListener('click', resetAll);
-</script>
-</body>
-</html>
+  function speakNext(){
+    if(currentPart>=script.length){end();return;}
+    speechText.textContent = script[currentPart];
+    const u = new SpeechSynthesisUtterance(script[currentPart]);
+    u.voice = voice; u.rate=0.85; u.pitch=1.0; u.volume=1;
+    u.onstart=()=>voiceStatus.textContent=`Speaking — ${currentPart+1}/${script.length}`;
+    u.onend=()=>{currentPart++;setTimeout(speakNext,2000);};
+    synth.speak(u);
+  }
+  function end(){
+    duo.classList.remove('speaking');
+    speech
