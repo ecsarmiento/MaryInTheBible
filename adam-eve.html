@@ -3,441 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adam & Eve — The First Family</title>
+<title>Adam & Eve — The Beginning of Promise</title>
 <style>
-/* ===== GLOBAL ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #e8f5e4 0%, #cfe8c5 100%);
+  background: linear-gradient(180deg, #e8f5e8 0%, #d0e8d0 100%);
   overflow: hidden;
   position: relative;
 }
-
-/* ===== STAGE ===== */
+.home-btn {
+  position: absolute; top: 15px; left: 20px; z-index: 100;
+  background: #fff; padding: 8px 16px; border-radius: 6px;
+  border: 2px solid #5a8a5a;
+  text-decoration: none; color: #3a6347; font-weight: bold;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+.home-btn:hover { background: #f0f8e8; }
 .stage {
-  position: absolute;
-  bottom: 120px;
-  left: 0; right: 0;
-  height: 400px;
-  overflow: hidden;
+  position: absolute; bottom: 120px; left: 0; right: 0; height: 400px; overflow: hidden;
 }
-
-/* ===== SHARED CHARACTER STYLES ===== */
-.character {
-  position: absolute;
-  bottom: 20px;
-  width: 130px; height: 290px;
-}
-
+.pair{position:absolute;bottom:20px;display:flex;gap:10px;left:-300px;}
+.character{width:120px;height:290px;}
 @keyframes walkBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}
 }
-.walking {
-  animation: walkBob 0.5s infinite ease-in-out;
-}
-
+.walking{animation:walkBob 0.5s infinite ease-in-out;}
 @keyframes speakBreath {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-4px) scale(1.015); }
+  0%,100%{transform:translateY(0)scale(1);}50%{transform:translateY(-4px)scale(1.02);}
 }
-.speaking {
-  animation: speakBreath 1.8s infinite ease-in-out;
-}
-
-.part { position: absolute; }
-
-/* ===== ADAM ===== */
-.adam { left: -180px; }
-.adam .head-wrapper {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 85px; height: 90px;
-}
-.adam .hair-back {
-  width: 85px; height: 45px;
-  background: linear-gradient(180deg, #8b5a2b 0%, #6f4722 100%);
-  border-radius: 4px 4px 0 0;
-}
-.adam .hair-front {
-  position: absolute; top: 0; left: 10px;
-  width: 65px; height: 22px;
-  background: #9a6635;
-  border-radius: 0 0 6px 6px;
-}
-.adam .face {
-  position: absolute; top: 16px; left: 12px;
-  width: 60px; height: 45px;
-  background: #e6c9a8;
-  border-radius: 2px;
-}
-.adam .eyes {
-  position: absolute; top: 24px; left: 0; width: 100%;
-  display: flex; justify-content: center; gap: 14px;
-}
-.adam .eye {
-  width: 9px; height: 9px;
-  background: #2c1810;
-  border-radius: 50%;
-}
-.adam .mouth {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  width: 15px; height: 6px;
-  background: #9a6b4a;
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s;
-}
-.adam.speaking .mouth { height: 9px; border-radius: 50%; }
-
-.adam .robe {
-  position: absolute; top: 85px; left: 50%; transform: translateX(-50%);
-  width: 100px; height: 200px;
-  background: linear-gradient(180deg, #4a7c59 0%, #3a6347 50%, #2c4f38 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
-  border: 3px solid #233f2c;
-}
-.adam .robe-inner {
-  position: absolute; top: 12px; left: 10px; right: 10px; bottom: 0;
-  background: linear-gradient(180deg, #5a946d 0%, #4a7c59 100%);
-  opacity: 0.5;
-}
-
-.adam .arm-left, .adam .arm-right {
-  position: absolute; top: 105px;
-  width: 22px; height: 80px;
-  background: #3a6347;
-  border: 2px solid #233f2c;
-  transform-origin: top center;
-}
-.adam .arm-left { left: 8px; transform: rotate(-12deg); }
-.adam .arm-right { right: 8px; transform: rotate(12deg); }
-.adam.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
-.adam.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
-
-/* ===== EVE ===== */
-.eve { left: -180px; }
-.eve .head-wrapper {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 85px; height: 90px;
-}
-.eve .hair-back {
-  width: 85px; height: 70px;
-  background: linear-gradient(180deg, #a06630 0%, #805020 100%);
-  border-radius: 4px;
-}
-.eve .hair-front {
-  position: absolute; top: 0; left: 8px;
-  width: 69px; height: 26px;
-  background: #b07540;
-  border-radius: 0 0 10px 10px;
-}
-.eve .face {
-  position: absolute; top: 18px; left: 12px;
-  width: 60px; height: 45px;
-  background: #f0d4b8;
-  border-radius: 2px;
-}
-.eve .eyes {
-  position: absolute; top: 26px; left: 0; width: 100%;
-  display: flex; justify-content: center; gap: 14px;
-}
-.eve .eye {
-  width: 9px; height: 9px;
-  background: #3a2418;
-  border-radius: 50%;
-}
-.eve .mouth {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  width: 15px; height: 6px;
-  background: #b87a7a;
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s;
-}
-.eve.speaking .mouth { height: 9px; border-radius: 50%; }
-
-.eve .robe {
-  position: absolute; top: 85px; left: 50%; transform: translateX(-50%);
-  width: 100px; height: 200px;
-  background: linear-gradient(180deg, #d4a855 0%, #b88630 50%, #9a7220 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
-  border: 3px solid #7a5a18;
-}
-.eve .robe-inner {
-  position: absolute; top: 12px; left: 10px; right: 10px; bottom: 0;
-  background: linear-gradient(180deg, #e0b865 0%, #d4a855 100%);
-  opacity: 0.5;
-}
-
-.eve .arm-left, .eve .arm-right {
-  position: absolute; top: 105px;
-  width: 22px; height: 80px;
-  background: #b88630;
-  border: 2px solid #7a5a18;
-  transform-origin: top center;
-}
-.eve .arm-left { left: 8px; transform: rotate(-12deg); }
-.eve .arm-right { right: 8px; transform: rotate(12deg); }
-.eve.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
-.eve.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
-
-@keyframes armSwingLeft {
-  from { transform: rotate(-12deg); }
-  to   { transform: rotate(5deg); }
-}
-@keyframes armSwingRight {
-  from { transform: rotate(12deg); }
-  to   { transform: rotate(-5deg); }
-}
-
-/* ===== GARDEN GROUND ===== */
-.ground {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-  background: repeating-linear-gradient(90deg, #6ab83f 0 40px, #5aa830 40px 80px);
-}
-
-/* ===== SPEECH BOX ===== */
-.speech-container {
-  position: absolute;
-  top: 30px; left: 50%; transform: translateX(-50%);
-  background: #fff;
-  border: 4px solid #5a8a5a;
-  border-radius: 8px;
-  padding: 22px;
-  width: 90%; max-width: 580px;
-  box-shadow: 6px 6px 0 rgba(60, 100, 60, 0.2);
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-.speech-container.visible { opacity: 1; }
-
-.speech-text {
-  font-size: 1.05rem; line-height: 1.7; color: #2a4a2a;
-  min-height: 80px; padding: 14px;
-  background: #f0f8e8; border-radius: 4px; border: 2px solid #c8d8b8;
-  margin-bottom: 15px;
-}
-.speaker-tag {
-  font-weight: bold; margin-bottom: 8px; display: block;
-}
-.adam-tag { color: #3a6347; }
-.eve-tag { color: #b88630; }
-.controls { display: flex; gap: 12px; flex-wrap: wrap; }
-button {
-  padding: 12px 24px; font-size: 1rem; font-weight: bold;
-  border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s;
-}
-#startBtn { background: #5a8a5a; color: #fff; }
-#startBtn:hover { background: #4a7a4a; transform: translateY(-2px); }
-#resetBtn { background: #d4a855; color: #3a2a10; }
-#resetBtn:hover { background: #b88630; transform: translateY(-2px); }
-.voice-status { margin-top: 12px; font-size: 0.9rem; color: #777; }
-h3 { color: #3a6347; margin-bottom: 10px; }
+.speaking{animation:speakBreath 1.8s infinite ease-in-out;}
+.head-wrapper{position:relative;margin:0 auto;width:80px;height:85px;}
+.hair-back-a{width:80px;height:45px;background:linear-gradient(180deg,#8b6030 0%,#6b4828 100%);border-radius:4px 4px 0 0;}
+.hair-back-e{width:80px;height:50px;background:linear-gradient(180deg,#604030 0%,#482c20 100%);border-radius:4px 4px 0 0;}
+.face{position:absolute;top:15px;left:10px;width:60px;height:45px;background:#e8c8a8;border-radius:3px;}
+.eyes{position:absolute;top:22px;left:0;width:100%;display:flex;justify-content:center;gap:12px;}
+.eye{width:9px;height:9px;background:#2c1810;border-radius:50%;}
+.mouth{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:14px;height:6px;background:#906040;border-radius:0 0 10px 10px;transition:all 0.3s;}
+.speaking .mouth{height:9px;border-radius:50%;}
+.body-a{position:relative;margin:0 auto;width:95px;height:205px;background:linear-gradient(180deg,#709050 0%,#5a7840 100%);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);border:3px solid #4a6030;}
+.body-e{position:relative;margin:0 auto;width:95px;height:205px;background:linear-gradient(180deg,#9070a0 0%,#785888 100%);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);border:3px solid #604870;}
+.arm-l,.arm-r{position:absolute;top:20px;width:20px;height:75px;background:#709050;border:2px solid #4a6030;transform-origin:top center;}
+.eve .arm-l,.eve .arm-r{background:#785888;border-color:#604870;}
+.arm-l{left:5px;transform:rotate(-12deg);}
+.arm-r{right:5px;transform:rotate(12deg);}
+.walking .arm-l{animation:armSwingL 0.5s infinite alternate;}
+.walking .arm-r{animation:armSwingR 0.5s infinite alternate;}
+@keyframes armSwingL{from{transform:rotate(-12deg);}to{transform:rotate(5deg);}}
+@keyframes armSwingR{from{transform:rotate(12deg);}to{transform:rotate(-5deg);}}
+.ground{position:absolute;bottom:0;left:0;right:0;height:100px;background:repeating-linear-gradient(90deg,#90b870 0 40px,#80a860 40px 80px);}
+.speech-container{position:absolute;top:30px;left:50%;transform:translateX(-50%);background:#fff;border:4px solid #5a8a5a;border-radius:8px;padding:22px;width:90%;max-width:580px;box-shadow:6px 6px 0 rgba(90,140,90,0.15);opacity:0;transition:opacity 0.8s ease;z-index:10;}
+.speech-container.visible{opacity:1;}
+.speaker-tag{font-weight:bold;margin-bottom:8px;display:block;}
+.adam-tag{color:#5a7840;}
+.eve-tag{color:#785888;}
+.speech-text{font-size:1.05rem;line-height:1.7;color:#2a3a20;min-height:80px;padding:14px;background:#f0f8e8;border-radius:4px;border:2px solid #c8e0c8;margin-bottom:15px;}
+.controls{display:flex;gap:12px;flex-wrap:wrap;}
+button{padding:12px 24px;font-size:1rem;font-weight:bold;border:none;border-radius:6px;cursor:pointer;transition:all 0.25s;}
+#startBtn{background:#5a8a5a;color:#fff;}
+#startBtn:hover{background:#4a704a;transform:translateY(-2px);}
+#resetBtn{background:#785888;color:#fff;}
+#resetBtn:hover{background:#604870;transform:translateY(-2px);}
+.voice-status{margin-top:12px;font-size:0.9rem;color:#777;}
+h3{color:#3a6347;margin-bottom:10px;}
 </style>
 </head>
 <body>
-  
-<a href="index.html" style="position: absolute; top: 15px; left: 20px; z-index: 100; 
-   background: #fff; padding: 8px 16px; border-radius: 6px; border: 2px solid #b89a6d;
-   text-decoration: none; color: #5a3f54; font-weight: bold; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">
-  🏠 Home
-</a>
-  
+<a href="index.html" class="home-btn">🏠 Home</a>
 <div class="speech-container" id="speechBox">
-  <h3>Adam & Eve — In the Garden</h3>
-  <p class="speech-text" id="speechText">We are ready to speak. Click below to begin.</p>
+  <h3>Adam & Eve — Created in God's Image</h3>
+  <p class="speech-text" id="speechText">We are the first family. Click to hear our story.</p>
   <div class="controls">
     <button id="startBtn">🎙️ Begin Story</button>
     <button id="resetBtn">🔄 Restart</button>
   </div>
   <p class="voice-status" id="voiceStatus">Status: Ready</p>
 </div>
-
 <div class="stage">
-  <!-- Adam -->
-  <div class="character adam" id="adam">
-    <div class="head-wrapper">
-      <div class="hair-back"></div>
-      <div class="hair-front"></div>
-      <div class="face">
-        <div class="eyes">
-          <div class="eye"></div>
-          <div class="eye"></div>
+  <div class="pair" id="pair">
+    <div class="character adam" id="adam">
+      <div class="head-wrapper">
+        <div class="hair-back-a"></div>
+        <div class="face">
+          <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+          <div class="mouth"></div>
         </div>
-        <div class="mouth"></div>
+      </div>
+      <div class="body-a">
+        <div class="arm-l"></div>
+        <div class="arm-r"></div>
       </div>
     </div>
-    <div class="robe"><div class="robe-inner"></div></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
-  </div>
-
-  <!-- Eve -->
-  <div class="character eve" id="eve">
-    <div class="head-wrapper">
-      <div class="hair-back"></div>
-      <div class="hair-front"></div>
-      <div class="face">
-        <div class="eyes">
-          <div class="eye"></div>
-          <div class="eye"></div>
+    <div class="character eve" id="eve">
+      <div class="head-wrapper">
+        <div class="hair-back-e"></div>
+        <div class="face">
+          <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+          <div class="mouth"></div>
         </div>
-        <div class="mouth"></div>
+      </div>
+      <div class="body-e">
+        <div class="arm-l"></div>
+        <div class="arm-r"></div>
       </div>
     </div>
-    <div class="robe"><div class="robe-inner"></div></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
   </div>
 </div>
-
 <div class="ground"></div>
-
 <script>
-// ===== SCRIPT: alternating dialogue =====
-const dialogue = [
-  { speaker: 'adam', text: "Hello. I am Adam — the first man, created by God himself." },
-  { speaker: 'eve', text: "And I am Eve — created from his side, to be his companion and equal." },
-  { speaker: 'adam', text: "God placed us in the Garden of Eden — paradise itself." },
-  { speaker: 'eve', text: "Every tree was beautiful, every fruit was sweet. We walked with God in the cool of the day." },
-  { speaker: 'adam', text: "He gave us one command: do not eat from the tree of the knowledge of good and evil." },
-  { speaker: 'eve', text: "But the serpent deceived me. I ate — and I gave to Adam, and he ate too." },
-  { speaker: 'adam', text: "We were afraid. We hid. We realized we had chosen our way over God’s way." },
-  { speaker: 'eve', text: "Sin entered the world through us — and with it, pain, sorrow, and separation." },
-  { speaker: 'adam', text: "Yet God did not abandon us. He clothed us, and he promised hope." },
-  { speaker: 'eve', text: "He spoke of a Saviour — one who would crush the serpent’s power and restore all things." },
-  { speaker: 'adam', text: "We left the garden, but we carried that promise in our hearts." },
-  { speaker: 'eve', text: "We are not just a story of failure. We are the beginning of God’s great plan of love." },
-  { speaker: 'adam', text: "Every generation comes from us — and every generation is loved by God." },
-  { speaker: 'eve', text: "You are made in God’s image — precious, purposeful, and never forgotten." },
-  { speaker: 'adam', text: "Turn to him. He is still waiting. He is still calling you home." }
-];
-
-const synth = window.speechSynthesis;
-const adam = document.getElementById('adam');
-const eve = document.getElementById('eve');
-const speechBox = document.getElementById('speechBox');
-const speechText = document.getElementById('speechText');
-const startBtn = document.getElementById('startBtn');
-const resetBtn = document.getElementById('resetBtn');
-const voiceStatus = document.getElementById('voiceStatus');
-
-let currentPart = 0;
-let adamVoice = null;
-let eveVoice = null;
-const ADAM_CENTER = window.innerWidth / 2 - 110;
-const EVE_CENTER = window.innerWidth / 2 + 20;
-const EXIT_POS = window.innerWidth + 150;
-
-// ===== VOICES =====
-function loadVoices() {
-  const voices = synth.getVoices();
-  adamVoice = voices.find(v => 
-    (v.lang === 'en-US' || v.lang === 'en-GB') && 
-    v.name.toLowerCase().includes('male')
-  ) || voices.find(v => v.lang === 'en-US') || voices[0];
-  
-  eveVoice = voices.find(v => 
-    (v.lang === 'en-US' || v.lang === 'en-GB') && 
-    v.name.toLowerCase().includes('female')
-  ) || voices.find(v => v.lang === 'en-GB') || voices[0];
-  
-  voiceStatus.textContent = `Voices ready | Status: Ready`;
-}
-synth.onvoiceschanged = loadVoices;
-loadVoices();
-
-// ===== ANIMATION: walk in together =====
-function moveToCenter() {
-  adam.classList.add('walking');
-  eve.classList.add('walking');
-  
-  adam.style.transition = 'left 2.5s ease-in-out';
-  eve.style.transition = 'left 2.5s ease-in-out';
-  
-  adam.style.left = `${ADAM_CENTER}px`;
-  eve.style.left = `${EVE_CENTER}px`;
-
-  setTimeout(() => {
-    adam.classList.remove('walking');
-    eve.classList.remove('walking');
-    speechBox.classList.add('visible');
-    speakNext();
-  }, 2500);
-}
-
-// ===== SPEAK ONE BY ONE =====
-function speakNext() {
-  if (currentPart >= dialogue.length) {
-    endSpeaking();
-    return;
+document.addEventListener('DOMContentLoaded', function(){
+  const dialogue = [
+    {sp:'adam',txt:'I am Adam — formed from the dust of the earth, breathed into by God himself.'},
+    {sp:'adam',txt:'God walked with us in the cool of the day. We knew him face to face in the Garden of Eden.'},
+    {sp:'eve',txt:'I am Eve — mother of all living. God brought us together, and we were one flesh, without shame.'},
+    {sp:'eve',txt:'We were given every tree to eat — only one was forbidden. But we doubted God\'s word and chose our own way.'},
+    {sp:'adam',txt:'We hid. We were afraid. Sin entered the world, and with it pain, sorrow, and separation.'},
+    {sp:'eve',txt:'Yet even then, God did not abandon us. He promised a Seed — one who would crush the serpent\'s head.'},
+    {sp:'adam',txt:'We left the garden, but the promise remained. We built altars, we worshipped, and we waited in hope.'},
+    {sp:'eve',txt:'Through our line came the people of God. And in the fullness of time, the Promise was born.'},
+    {sp:'adam',txt:'You are made in God\'s image — precious, loved, created for relationship.'},
+    {sp:'eve',txt:'When you stumble, remember: God seeks you. His grace is greater than any mistake.'},
+    {sp:'adam',txt:'The story did not end with us. It continues in you — and it leads to him.'},
+    {sp:'eve',txt:'Walk in love. God is making all things new.'}
+  ];
+  const synth = window.speechSynthesis;
+  const pair = document.getElementById('pair');
+  const adam = document.getElementById('adam');
+  const eve = document.getElementById('eve');
+  const speechBox = document.getElementById('speechBox');
+  const speechText = document.getElementById('speechText');
+  const startBtn = document.getElementById('startBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let idx=0, vAdam=null, vEve=null;
+  const CENTER = window.innerWidth/2 - 130;
+  const EXIT = window.innerWidth + 200;
+  function loadVoices(){
+    const v=synth.getVoices();
+    vAdam = v.find(x=>x.name.toLowerCase().includes('male')&&(x.lang==='en-US'||x.lang==='en-GB'))||v[0];
+    vEve = v.find(x=>x.name.toLowerCase().includes('female')&&(x.lang==='en-US'||x.lang==='en-GB'))||v[0];
+    voiceStatus.textContent='Voices ready | Status: Ready';
   }
-
-  const { speaker, text } = dialogue[currentPart];
-  
-  // Highlight speaker
-  speechText.innerHTML = `
-    <span class="speaker-tag ${speaker}-tag">${speaker === 'adam' ? 'Adam' : 'Eve'}:</span>
-    ${text}
-  `;
-  
-  // Speaking animation
-  if (speaker === 'adam') {
-    eve.classList.remove('speaking');
-    adam.classList.add('speaking');
-  } else {
-    adam.classList.remove('speaking');
-    eve.classList.add('speaking');
+  synth.onvoiceschanged=loadVoices; loadVoices();
+  function moveIn(){
+    pair.classList.add('walking');
+    pair.style.transition='left 2.5s ease-in-out';
+    pair.style.left=CENTER+'px';
+    setTimeout(()=>{pair.classList.remove('walking');speechBox.classList.add('visible');speak();},2500);
   }
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.voice = speaker === 'adam' ? adamVoice : eveVoice;
-  utterance.rate = speaker === 'adam' ? 0.85 : 0.8;
-  utterance.pitch = speaker === 'adam' ? 0.95 : 1.3;
-  utterance.volume = 1.0;
-
-  utterance.onstart = () => {
-    voiceStatus.textContent = `${speaker === 'adam' ? 'Adam' : 'Eve'} speaking — ${currentPart+1}/${dialogue.length}`;
-  };
-  utterance.onend = () => {
-    currentPart++;
-    setTimeout(speakNext, 2000);
-  };
-
-  synth.speak(utterance);
-}
-
-function endSpeaking() {
-  adam.classList.remove('speaking');
-  eve.classList.remove('speaking');
-  speechText.textContent = "Thank you for listening. God bless you.";
-  voiceStatus.textContent = "Finished — departing together";
-
-  setTimeout(() => {
-    adam.classList.add('walking');
-    eve.classList.add('walking');
-    adam.style.transition = 'left 2.5s ease-in-out';
-    eve.style.transition = 'left 2.5s ease-in-out';
-    adam.style.left = `${EXIT_POS}px`;
-    eve.style.left = `${EXIT_POS + 60}px`;
-  }, 3000);
-}
-
-function resetAll() {
-  synth.cancel();
-  currentPart = 0;
-  adam.classList.remove('walking', 'speaking');
-  eve.classList.remove('walking', 'speaking');
-  adam.style.transition = 'none';
-  eve.style.transition = 'none';
-  adam.style.left = '-180px';
-  eve.style.left = '-180px';
-  speechBox.classList.remove('visible');
-  speechText.textContent = "We are ready to speak. Click below to begin.";
-  voiceStatus.textContent = "Status: Ready";
-}
-
-startBtn.addEventListener('click', moveToCenter);
-resetBtn.addEventListener('click', resetAll);
+  function speak(){
+    if(idx>=dialogue.length){done();return;}
+    const d=dialogue[idx];
+    adam.classList.toggle('speaking',d.sp==='adam');
+    eve.classList.toggle('speaking',d.sp==='eve');
+    speechText.innerHTML=`<span class="speaker-tag ${d.sp}-tag">${d.sp==='adam'?'Adam':'Eve'}:</span> ${d.txt}`;
+    const u=new SpeechSynthesisUtterance(d.txt);
+    u.voice=d.sp==='adam'?vAdam:vEve;
+    u.rate=d.sp==='adam'?0.8:0.85;
+    u.pitch=d.sp==='adam'?0.9:1.05;
+    u.onstart=()=>voiceStatus.textContent=`Speaking ${idx+1}/${dialogue.length}`;
+    u.onend=()=>{idx++;setTimeout(speak,2000);};
+    synth.speak(u);
+  }
+  function done(){
+    adam.classList.remove('speaking'); eve.classList.remove('speaking');
+    speechText.textContent='You are God\'s beloved child. His promise lives in you.';
+    voiceStatus.textContent='Finished';
+    setTimeout(()=>{pair.classList.add('walking');pair.style.transition='left 2.5s ease-in-out';pair.style.left=EXIT+'px';},3000);
+  }
+  function reset(){
+    synth.cancel(); idx=0;
+    adam.classList.remove('walking','speaking'); eve.classList.remove('walking','speaking');
+    pair.style.transition='none'; pair.style.left='-300px';
+    speechBox.classList.remove('visible');
+    speechText.textContent='We are the first family. Click to hear our story.';
+    voiceStatus.textContent='Status: Ready';
+  }
+  startBtn.addEventListener('click',moveIn);
+  resetBtn.addEventListener('click',reset);
+});
 </script>
 </body>
 </html>
