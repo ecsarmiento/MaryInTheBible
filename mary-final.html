@@ -1,167 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mary — Faithful Servant of the Lord</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
-body {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #f8f0f5 0%, #e8d8e8 100%);
-  overflow: hidden;
-  position: relative;
-}
-.home-btn {
-  position: absolute; top: 15px; left: 20px; z-index: 100;
-  background: #fff; padding: 8px 16px; border-radius: 6px;
-  border: 2px solid #8a6080;
-  text-decoration: none; color: #5a3f54; font-weight: bold;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
-}
-.home-btn:hover { background: #faf5f8; }
-.stage {
-  position: absolute; bottom: 120px; left: 0; right: 0; height: 400px; overflow: hidden;
-}
-.mary {
-  position: absolute; bottom: 20px; width: 130px; height: 300px; left: -200px;
-}
-@keyframes walkBob {
-  0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}
-}
-.mary.walking{animation:walkBob 0.5s infinite ease-in-out;}
-@keyframes speakBreath {
-  0%,100%{transform:translateY(0)scale(1);}50%{transform:translateY(-4px)scale(1.02);}
-}
-.mary.speaking{animation:speakBreath 1.8s infinite ease-in-out;}
-.head-wrapper{position:absolute;top:0;left:50%;transform:translateX(-50%);width:85px;height:90px;}
-.hair-back{width:85px;height:48px;background:linear-gradient(180deg,#5c2050 0%,#4a1a40 100%);border-radius:4px 4px 0 0;}
-.hair-front{position:absolute;top:0;left:10px;width:65px;height:24px;background:#7a3070;border-radius:0 0 6px 6px;}
-.veil{position:absolute;top:5px;left:5px;width:75px;height:85px;background:linear-gradient(180deg,#d8c8e8 0%,#c8b8d8 100%);border-radius:6px;clip-path:polygon(0 0,100% 0,100% 100%,60% 85%,40% 85%,0 100%);opacity:0.9;}
-.face{position:absolute;top:20px;left:12px;width:60px;height:45px;background:#f8d8c8;border-radius:2px;}
-.eyes{position:absolute;top:24px;left:0;width:100%;display:flex;justify-content:center;gap:14px;}
-.eye{width:9px;height:9px;background:#3a1030;border-radius:50%;}
-.mouth{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:14px;height:6px;background:#b070a0;border-radius:0 0 10px 10px;transition:all 0.3s;}
-.mary.speaking .mouth{height:9px;border-radius:50%;}
-.robe{position:absolute;top:85px;left:50%;transform:translateX(-50%);width:100px;height:205px;background:linear-gradient(180deg,#7a4090 0%,#603078 50%,#482060 100%);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);border:3px solid #381850;}
-.robe-inner{position:absolute;top:12px;left:10px;right:10px;bottom:0;background:linear-gradient(180deg,#9060a8 0%,#7a4090 100%);opacity:0.35;}
-.arm-left,.arm-right{position:absolute;top:105px;width:22px;height:80px;background:#603078;border:2px solid #381850;transform-origin:top center;}
-.arm-left{left:8px;transform:rotate(-12deg);}
-.arm-right{right:8px;transform:rotate(12deg);}
-.mary.walking .arm-left{animation:armSwingLeft 0.5s infinite alternate;}
-.mary.walking .arm-right{animation:armSwingRight 0.5s infinite alternate;}
-@keyframes armSwingLeft{from{transform:rotate(-12deg);}to{transform:rotate(5deg);}}
-@keyframes armSwingRight{from{transform:rotate(12deg);}to{transform:rotate(-5deg);}}
-.ground{position:absolute;bottom:0;left:0;right:0;height:100px;background:repeating-linear-gradient(90deg,#d8c8d8 0 40px,#c8b8c8 40px 80px);}
-.speech-container{position:absolute;top:30px;left:50%;transform:translateX(-50%);background:#fff;border:4px solid #8a6080;border-radius:8px;padding:22px;width:90%;max-width:550px;box-shadow:6px 6px 0 rgba(90,60,90,0.15);opacity:0;transition:opacity 0.8s ease;z-index:10;}
-.speech-container.visible{opacity:1;}
-.speech-text{font-size:1.05rem;line-height:1.7;color:#4a2040;min-height:80px;padding:14px;background:#faf5f8;border-radius:4px;border:2px solid #e8d8e8;margin-bottom:15px;}
-.controls{display:flex;gap:12px;flex-wrap:wrap;}
-button{padding:12px 24px;font-size:1rem;font-weight:bold;border:none;border-radius:6px;cursor:pointer;transition:all 0.25s;}
-#startBtn{background:#7a4090;color:#fff;}
-#startBtn:hover{background:#603078;transform:translateY(-2px);}
-#resetBtn{background:#b890b0;color:#fff;}
-#resetBtn:hover{background:#9a7090;transform:translateY(-2px);}
-.voice-status{margin-top:12px;font-size:0.9rem;color:#777;}
-h3{color:#7a4090;margin-bottom:10px;}
-</style>
+  <meta charset="UTF-8">
+  <title>Mary Test</title>
+  <style>
+    body { background: #f8f0f5; font-family: sans-serif; padding: 30px; }
+    .box { background: white; padding: 30px; border-radius: 10px; max-width: 500px; margin: 0 auto; }
+  </style>
 </head>
 <body>
-<a href="index.html" class="home-btn">🏠 Home</a>
-<div class="speech-container" id="speechBox">
-  <h3>Mary — Faithful Servant of the Lord</h3>
-  <p class="speech-text" id="speechText">I am ready to share. Click below to begin.</p>
-  <div class="controls">
-    <button id="startBtn">🎙️ Begin Story</button>
-    <button id="resetBtn">🔄 Restart</button>
+  <div class="box">
+    <h1>Mary — Faithful Servant</h1>
+    <p>If you see this, your file is working correctly! ✅</p>
+    <p>The angel said: "Greetings, you who are highly favored!"</p>
+    <a href="index.html">← Back Home</a>
   </div>
-  <p class="voice-status" id="voiceStatus">Status: Ready</p>
-</div>
-<div class="stage">
-  <div class="mary" id="mary">
-    <div class="head-wrapper">
-      <div class="hair-back"></div>
-      <div class="hair-front"></div>
-      <div class="veil"></div>
-      <div class="face">
-        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
-        <div class="mouth"></div>
-      </div>
-    </div>
-    <div class="robe"><div class="robe-inner"></div></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
-  </div>
-</div>
-<div class="ground"></div>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const maryScript = [
-    "Greetings, beloved. I am Mary, a young woman from the town of Nazareth.",
-    "One day, an angel named Gabriel appeared to me. He said: 'Greetings, you who are highly favored! The Lord is with you.'",
-    "I was troubled and wondered what kind of greeting this could be.",
-    "He told me not to fear. I would conceive and give birth to a son, and I was to call him Jesus.",
-    "He will be great, the Son of the Most High. God will give him the throne of his father David.",
-    "I asked: 'How can this be? I am a virgin.'",
-    "The Holy Spirit will come upon you, and the power of the Most High will overshadow you. Nothing is impossible with God.",
-    "Then I spoke the words that changed everything: 'I am the Lord's servant. May it be to me as you have said.'",
-    "I visited my cousin Elizabeth. When we met, her baby leaped inside her, and she called me blessed.",
-    "My heart sang: 'My soul glorifies the Lord, and my spirit rejoices in God my Saviour.'",
-    "I traveled to Bethlehem with Joseph. There was no room, so Jesus was born in a manger.",
-    "I kept all these things in my heart, pondering the mystery of God's grace.",
-    "I saw him grow. I taught him. I watched him begin his ministry.",
-    "At the cross, I stood and did not leave. Sorrow pierced my soul, but I trusted God.",
-    "And then came the resurrection — hope that cannot die.",
-    "God does not ask for perfection. He asks for your 'Yes.' Say it to him, and he will do great things through you."
-  ];
-  const synth = window.speechSynthesis;
-  const mary = document.getElementById('mary');
-  const speechBox = document.getElementById('speechBox');
-  const speechText = document.getElementById('speechText');
-  const startBtn = document.getElementById('startBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const voiceStatus = document.getElementById('voiceStatus');
-  let currentPart = 0, maryVoice = null;
-  const STAGE_CENTER = window.innerWidth/2 - 65;
-  const STAGE_EXIT = window.innerWidth + 150;
-  function loadVoices(){
-    const v = synth.getVoices();
-    maryVoice = v.find(x=>x.lang==='en-US'||x.lang==='en-GB')||v[0];
-    voiceStatus.textContent = `Voice: ${(maryVoice?.name||'Default').slice(0,25)}… | Ready`;
-  }
-  synth.onvoiceschanged = loadVoices; loadVoices();
-  function moveToCenter(){
-    mary.classList.add('walking');
-    mary.style.transition = 'left 2.5s ease-in-out';
-    mary.style.left = STAGE_CENTER+'px';
-    setTimeout(()=>{mary.classList.remove('walking');mary.classList.add('speaking');speechBox.classList.add('visible');speakNext();},2500);
-  }
-  function speakNext(){
-    if(currentPart>=maryScript.length){endSpeaking();return;}
-    speechText.textContent = maryScript[currentPart];
-    const u = new SpeechSynthesisUtterance(maryScript[currentPart]);
-    u.voice = maryVoice; u.rate=0.82; u.pitch=1.05; u.volume=1;
-    u.onstart=()=>voiceStatus.textContent=`Speaking — ${currentPart+1}/${maryScript.length}`;
-    u.onend=()=>{currentPart++;setTimeout(speakNext,2000);};
-    synth.speak(u);
-  }
-  function endSpeaking(){
-    mary.classList.remove('speaking');
-    speechText.textContent = "Say 'Yes' to God. He is faithful, and his love endures forever.";
-    voiceStatus.textContent = "Finished — Mary departs";
-    setTimeout(()=>{mary.classList.add('walking');mary.style.transition='left 2.5s ease-in-out';mary.style.left=STAGE_EXIT+'px';},3000);
-  }
-  function resetAll(){
-    synth.cancel(); currentPart=0;
-    mary.classList.remove('walking','speaking');
-    mary.style.transition='none'; mary.style.left='-200px';
-    speechBox.classList.remove('visible');
-    speechText.textContent="I am ready to share. Click below to begin.";
-    voiceStatus.textContent="Status: Ready";
-  }
-  startBtn.addEventListener('click',moveToCenter);
-  resetBtn.addEventListener('click',resetAll);
-});
-</script>
 </body>
 </html>
