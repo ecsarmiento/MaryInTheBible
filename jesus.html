@@ -5,327 +5,164 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jesus — The Way, The Truth, The Life</title>
 <style>
-/* ===== GLOBAL ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #fbf8f0 0%, #f0e6d2 100%);
+  background: linear-gradient(180deg, #fff9e8 0%, #f8f0d0 100%);
   overflow: hidden;
   position: relative;
 }
-
-/* ===== STAGE ===== */
+.home-btn {
+  position: absolute; top: 15px; left: 20px; z-index: 100;
+  background: #fff; padding: 8px 16px; border-radius: 6px;
+  border: 2px solid #d4a044;
+  text-decoration: none; color: #8a6000; font-weight: bold;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+.home-btn:hover { background: #fffaf0; }
 .stage {
-  position: absolute;
-  bottom: 120px;
-  left: 0; right: 0;
-  height: 400px;
-  overflow: hidden;
+  position: absolute; bottom: 120px; left: 0; right: 0; height: 400px; overflow: hidden;
 }
-
-/* ===== JESUS CHARACTER ===== */
 .jesus {
-  position: absolute;
-  bottom: 20px;
-  width: 140px; height: 300px;
-  left: -200px;
+  position: absolute; bottom: 20px; width: 130px; height: 300px; left: -200px;
 }
-
 @keyframes walkBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}
 }
-.jesus.walking {
-  animation: walkBob 0.5s infinite ease-in-out;
+.jesus.walking{animation:walkBob 0.5s infinite ease-in-out;}
+@keyframes speakBreath {
+  0%,100%{transform:translateY(0)scale(1);}50%{transform:translateY(-4px)scale(1.02);}
 }
-
-@keyframes speakGlow {
-  0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
-  50% { transform: translateY(-5px) scale(1.02); filter: brightness(1.08); }
-}
-.jesus.speaking {
-  animation: speakGlow 2.0s infinite ease-in-out;
-}
-
-.part { position: absolute; }
-
-/* Head & Face */
-.head-wrapper {
-  position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 90px; height: 95px;
-}
-.hair-back {
-  width: 90px; height: 55px;
-  background: linear-gradient(180deg, #d4a044 0%, #b8860b 50%, #9a720a 100%);
-  border-radius: 4px 4px 0 0;
-}
-.hair-front {
-  position: absolute; top: 0; left: 8px;
-  width: 74px; height: 28px;
-  background: #e0b050;
-  border-radius: 0 0 8px 8px;
-}
-.face {
-  position: absolute; top: 18px; left: 15px;
-  width: 60px; height: 48px;
-  background: #f5e0cc;
-  border-radius: 2px;
-}
-.eyes {
-  position: absolute; top: 26px; left: 0; width: 100%;
-  display: flex; justify-content: center; gap: 14px;
-}
-.eye {
-  width: 9px; height: 10px;
-  background: #1a3a5c;
-  border-radius: 50%;
-}
-.mouth {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  width: 16px; height: 7px;
-  background: #b86b6b;
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s;
-}
-.jesus.speaking .mouth {
-  height: 10px; border-radius: 50%;
-}
-
-/* Robe — Deep blue with gold */
-.robe {
-  position: absolute;
-  top: 85px; left: 50%; transform: translateX(-50%);
-  width: 110px; height: 210px;
-  background: linear-gradient(180deg, #2b4a7a 0%, #1e3a66 50%, #152a4d 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
-  border: 3px solid #0f1f36;
-}
-.robe-inner {
-  position: absolute;
-  top: 12px; left: 10px; right: 10px; bottom: 0;
-  background: linear-gradient(180deg, #3a5a9a 0%, #2b4a7a 100%);
-  opacity: 0.4;
-}
-.cloak {
-  position: absolute;
-  top: 90px; left: 50%; transform: translateX(-50%);
-  width: 118px; height: 200px;
-  background: linear-gradient(180deg, #d4a044 0%, #b8860b 100%);
-  clip-path: polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%);
-  border: 3px solid #9a720a;
-  opacity: 0.35;
-}
-
-/* Arms */
-.arm-left, .arm-right {
-  position: absolute;
-  top: 105px;
-  width: 24px; height: 85px;
-  background: #1e3a66;
-  border: 2px solid #0f1f36;
-  transform-origin: top center;
-}
-.arm-left { left: 10px; transform: rotate(-10deg); }
-.arm-right { right: 10px; transform: rotate(10deg); }
-.jesus.walking .arm-left { animation: armSwingLeft 0.5s infinite alternate; }
-.jesus.walking .arm-right { animation: armSwingRight 0.5s infinite alternate; }
-@keyframes armSwingLeft {
-  from { transform: rotate(-10deg); }
-  to   { transform: rotate(5deg); }
-}
-@keyframes armSwingRight {
-  from { transform: rotate(10deg); }
-  to   { transform: rotate(-5deg); }
-}
-
-/* Ground */
-.ground {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-  background: repeating-linear-gradient(90deg, #c9b896 0 40px, #b8a884 40px 80px);
-}
-
-/* ===== SPEECH BOX ===== */
-.speech-container {
-  position: absolute;
-  top: 30px; left: 50%; transform: translateX(-50%);
-  background: #fff;
-  border: 4px solid #d4a044;
-  border-radius: 8px;
-  padding: 22px;
-  width: 90%; max-width: 550px;
-  box-shadow: 6px 6px 0 rgba(180, 130, 30, 0.2);
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-.speech-container.visible { opacity: 1; }
-
-.speech-text {
-  font-size: 1.05rem; line-height: 1.7; color: #2a3a5a;
-  min-height: 80px; padding: 14px;
-  background: #fffaf0; border-radius: 4px; border: 2px solid #f0e0b8;
-  margin-bottom: 15px;
-}
-.controls { display: flex; gap: 12px; flex-wrap: wrap; }
-button {
-  padding: 12px 24px; font-size: 1rem; font-weight: bold;
-  border: none; border-radius: 6px; cursor: pointer; transition: all 0.25s;
-}
-#startBtn { background: #d4a044; color: #1a2a4a; }
-#startBtn:hover { background: #b8860b; transform: translateY(-2px); }
-#resetBtn { background: #5a7ab8; color: #fff; }
-#resetBtn:hover { background: #4a6aa8; transform: translateY(-2px); }
-.voice-status { margin-top: 12px; font-size: 0.9rem; color: #777; }
-h3 { color: #b8860b; margin-bottom: 10px; }
+.jesus.speaking{animation:speakBreath 1.8s infinite ease-in-out;}
+.head-wrapper{position:absolute;top:0;left:50%;transform:translateX(-50%);width:85px;height:90px;}
+.hair-back{width:85px;height:55px;background:linear-gradient(180deg,#d4b888 0%,#b89860 100%);border-radius:4px 4px 0 0;}
+.hair-front{position:absolute;top:0;left:8px;width:70px;height:28px;background:#e8d0a8;border-radius:0 0 8px 8px;}
+.beard{position:absolute;top:44px;left:10px;width:65px;height:50px;background:linear-gradient(180deg,#e0c090 0%,#c8a060 100%);border-radius:4px 4px 8px 8px;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);}
+.face{position:absolute;top:18px;left:12px;width:60px;height:45px;background:#f8d8b8;border-radius:2px;}
+.eyes{position:absolute;top:24px;left:0;width:100%;display:flex;justify-content:center;gap:14px;}
+.eye{width:9px;height:9px;background:#2c1810;border-radius:50%;}
+.mouth{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:16px;height:7px;background:#906030;border-radius:0 0 10px 10px;transition:all 0.3s;}
+.jesus.speaking .mouth{height:10px;border-radius:50%;}
+.robe{position:absolute;top:85px;left:50%;transform:translateX(-50%);width:105px;height:205px;background:linear-gradient(180deg,#d4a044 0%,#b8860b 50%,#9a7220 100%);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);border:3px solid #7a5a18;}
+.robe-inner{position:absolute;top:12px;left:10px;right:10px;bottom:0;background:linear-gradient(180deg,#e8c878 0%,#d4a044 100%);opacity:0.4;}
+.cloak{position:absolute;top:90px;left:50%;transform:translateX(-50%);width:115px;height:200px;background:linear-gradient(180deg,#f0d890 0%,#e0c070 100%);clip-path:polygon(0 0,100% 0,92% 100%,8% 100%);border:3px solid #b8860b;opacity:0.35;}
+.arm-left,.arm-right{position:absolute;top:105px;width:22px;height:80px;background:#b8860b;border:2px solid #7a5a18;transform-origin:top center;}
+.arm-left{left:8px;transform:rotate(-12deg);}
+.arm-right{right:8px;transform:rotate(12deg);}
+.jesus.walking .arm-left{animation:armSwingLeft 0.5s infinite alternate;}
+.jesus.walking .arm-right{animation:armSwingRight 0.5s infinite alternate;}
+@keyframes armSwingLeft{from{transform:rotate(-12deg);}to{transform:rotate(5deg);}}
+@keyframes armSwingRight{from{transform:rotate(12deg);}to{transform:rotate(-5deg);}}
+.ground{position:absolute;bottom:0;left:0;right:0;height:100px;background:repeating-linear-gradient(90deg,#e8d098 0 40px,#d8c088 40px 80px);}
+.speech-container{position:absolute;top:30px;left:50%;transform:translateX(-50%);background:#fff;border:4px solid #d4a044;border-radius:8px;padding:22px;width:90%;max-width:550px;box-shadow:6px 6px 0 rgba(180,130,30,0.15);opacity:0;transition:opacity 0.8s ease;z-index:10;}
+.speech-container.visible{opacity:1;}
+.speech-text{font-size:1.05rem;line-height:1.7;color:#5a4010;min-height:80px;padding:14px;background:#fffaf0;border-radius:4px;border:2px solid #f0d890;margin-bottom:15px;}
+.controls{display:flex;gap:12px;flex-wrap:wrap;}
+button{padding:12px 24px;font-size:1rem;font-weight:bold;border:none;border-radius:6px;cursor:pointer;transition:all 0.25s;}
+#startBtn{background:#d4a044;color:#fff;}
+#startBtn:hover{background:#b8860b;transform:translateY(-2px);}
+#resetBtn{background:#e8b860;color:#fff;}
+#resetBtn:hover{background:#d49840;transform:translateY(-2px);}
+.voice-status{margin-top:12px;font-size:0.9rem;color:#777;}
+h3{color:#b8860b;margin-bottom:10px;}
 </style>
 </head>
 <body>
-  
-<a href="index.html" style="position: absolute; top: 15px; left: 20px; z-index: 100; 
-   background: #fff; padding: 8px 16px; border-radius: 6px; border: 2px solid #b89a6d;
-   text-decoration: none; color: #5a3f54; font-weight: bold; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">
-  🏠 Home
-</a>
-  
+<a href="index.html" class="home-btn">🏠 Home</a>
 <div class="speech-container" id="speechBox">
-  <h3>Jesus — Son of God, Saviour of the World</h3>
-  <p class="speech-text" id="speechText">I am ready to speak. Click below to begin.</p>
+  <h3>Jesus — The Way, The Truth, The Life</h3>
+  <p class="speech-text" id="speechText">I am the light of the world. Click to hear my words.</p>
   <div class="controls">
     <button id="startBtn">🎙️ Begin Story</button>
     <button id="resetBtn">🔄 Restart</button>
   </div>
   <p class="voice-status" id="voiceStatus">Status: Ready</p>
 </div>
-
 <div class="stage">
   <div class="jesus" id="jesus">
     <div class="head-wrapper">
       <div class="hair-back"></div>
       <div class="hair-front"></div>
       <div class="face">
-        <div class="eyes">
-          <div class="eye"></div>
-          <div class="eye"></div>
-        </div>
+        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
         <div class="mouth"></div>
       </div>
+      <div class="beard"></div>
     </div>
     <div class="cloak"></div>
-    <div class="robe">
-      <div class="robe-inner"></div>
-    </div>
+    <div class="robe"><div class="robe-inner"></div></div>
     <div class="arm-left"></div>
     <div class="arm-right"></div>
   </div>
 </div>
-
 <div class="ground"></div>
-
 <script>
-const jesusScript = [
-  "Peace be with you. I am Jesus.",
-  "I was born in Bethlehem, raised in Nazareth — fully human, yet fully God.",
-  "I came not to be served, but to serve, and to give my life for you.",
-  "I have seen the weary, the lost, the hurting — and I have called them beloved.",
-  "I taught about the Kingdom of God — love, mercy, justice, and faith like a child’s.",
-  "I walked the roads of Galilee, healing the sick, comforting the broken-hearted.",
-  "I told you: 'I am the Way, the Truth, and the Life. No one comes to the Father except through me.'",
-  "I faced betrayal, suffering, and death — willingly, out of love for you.",
-  "But death could not hold me. I have risen — and I am alive forevermore!",
-  "I am not just a teacher from the past. I am here, now — standing at the door and knocking.",
-  "I am the Good Shepherd who knows my sheep and lays down my life for them.",
-  "Believe in me. Trust me. Walk with me. I am with you always, to the very end.",
-  "This is my promise: I will never leave you. You are mine, and I love you."
-];
-
-const synth = window.speechSynthesis;
-const jesus = document.getElementById('jesus');
-const speechBox = document.getElementById('speechBox');
-const speechText = document.getElementById('speechText');
-const startBtn = document.getElementById('startBtn');
-const resetBtn = document.getElementById('resetBtn');
-const voiceStatus = document.getElementById('voiceStatus');
-
-let currentPart = 0;
-let jesusVoice = null;
-const STAGE_CENTER = window.innerWidth / 2 - 70;
-const STAGE_RIGHT = window.innerWidth + 100;
-
-function loadVoices() {
-  const voices = synth.getVoices();
-  jesusVoice = voices.find(v => 
-    (v.lang === 'en-US' || v.lang === 'en-GB') && 
-    v.name.toLowerCase().includes('male')
-  ) || voices.find(v => v.lang === 'en-US') || voices[0];
-  voiceStatus.textContent = `Voice: ${(jesusVoice?.name || 'Default').slice(0,25)}… | Ready`;
-}
-synth.onvoiceschanged = loadVoices;
-loadVoices();
-
-function moveToCenter() {
-  jesus.classList.add('walking');
-  jesus.style.transition = 'left 2.5s ease-in-out';
-  jesus.style.left = `${STAGE_CENTER}px`;
-
-  setTimeout(() => {
-    jesus.classList.remove('walking');
-    jesus.classList.add('speaking');
-    speechBox.classList.add('visible');
-    speakNext();
-  }, 2500);
-}
-
-function speakNext() {
-  if (currentPart >= jesusScript.length) {
-    endSpeaking();
-    return;
+document.addEventListener('DOMContentLoaded', function(){
+  const jesusScript = [
+    "I am Jesus. Before Abraham was, I am. I was with God in the beginning.",
+    "I was born in Bethlehem, laid in a manger. I grew in wisdom and grace in Nazareth.",
+    "At thirty, I began my ministry. I preached good news to the poor and freedom to the oppressed.",
+    "I taught with parables — the sower, the lost sheep, the prodigal son.",
+    "I healed the sick, gave sight to the blind, and made the lame walk.",
+    "I fed five thousand with five loaves and two fish — there was more left over than we started with.",
+    "I said: 'I am the Way, the Truth, and the Life. No one comes to the Father except through me.'",
+    "'Love the Lord your God with all your heart, soul, mind, and strength. Love your neighbor as yourself.'",
+    "They led me to Golgotha. I carried my cross. I died for you. My blood was poured out for the forgiveness of sins.",
+    "They laid me in a tomb. It was sealed with a great stone.",
+    "On the third day, death could not hold me. I rose again — alive forevermore!",
+    "I appeared to Mary, to the disciples, and to more than five hundred at one time.",
+    "All authority in heaven and on earth has been given to me. Go and make disciples of all nations.",
+    "I am with you always, even to the very end of the age.",
+    "I am the resurrection and the Life. Whoever believes in me will live, even though they die."
+  ];
+  const synth = window.speechSynthesis;
+  const jesus = document.getElementById('jesus');
+  const speechBox = document.getElementById('speechBox');
+  const speechText = document.getElementById('speechText');
+  const startBtn = document.getElementById('startBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let currentPart = 0, jesusVoice = null;
+  const STAGE_CENTER = window.innerWidth/2 - 65;
+  const STAGE_EXIT = window.innerWidth + 150;
+  function loadVoices(){
+    const v = synth.getVoices();
+    jesusVoice = v.find(x=>x.name.toLowerCase().includes('male')&&(x.lang==='en-US'||x.lang==='en-GB'))||v[0];
+    voiceStatus.textContent = `Voice: ${(jesusVoice?.name||'Default').slice(0,25)}… | Ready`;
   }
-
-  const text = jesusScript[currentPart];
-  speechText.textContent = text;
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.voice = jesusVoice;
-  utterance.rate = 0.8;
-  utterance.pitch = 1.1;
-  utterance.volume = 1.0;
-
-  utterance.onstart = () => {
-    voiceStatus.textContent = `Speaking — Part ${currentPart+1}/${jesusScript.length}`;
-  };
-  utterance.onend = () => {
-    currentPart++;
-    setTimeout(speakNext, 2000);
-  };
-
-  synth.speak(utterance);
-}
-
-function endSpeaking() {
-  jesus.classList.remove('speaking');
-  speechText.textContent = "I am with you always. Peace be with you.";
-  voiceStatus.textContent = "Finished — Jesus departs";
-
-  setTimeout(() => {
+  synth.onvoiceschanged = loadVoices; loadVoices();
+  function moveToCenter(){
     jesus.classList.add('walking');
     jesus.style.transition = 'left 2.5s ease-in-out';
-    jesus.style.left = `${STAGE_RIGHT}px`;
-  }, 3000);
-}
-
-function resetAll() {
-  synth.cancel();
-  currentPart = 0;
-  jesus.classList.remove('walking', 'speaking');
-  jesus.style.transition = 'none';
-  jesus.style.left = '-200px';
-  speechBox.classList.remove('visible');
-  speechText.textContent = "I am ready to speak. Click below to begin.";
-  voiceStatus.textContent = "Status: Ready";
-}
-
-startBtn.addEventListener('click', moveToCenter);
-resetBtn.addEventListener('click', resetAll);
+    jesus.style.left = STAGE_CENTER+'px';
+    setTimeout(()=>{jesus.classList.remove('walking');jesus.classList.add('speaking');speechBox.classList.add('visible');speakNext();},2500);
+  }
+  function speakNext(){
+    if(currentPart>=jesusScript.length){endSpeaking();return;}
+    speechText.textContent = jesusScript[currentPart];
+    const u = new SpeechSynthesisUtterance(jesusScript[currentPart]);
+    u.voice = jesusVoice; u.rate=0.78; u.pitch=0.95; u.volume=1;
+    u.onstart=()=>voiceStatus.textContent=`Speaking — ${currentPart+1}/${jesusScript.length}`;
+    u.onend=()=>{currentPart++;setTimeout(speakNext,2200);};
+    synth.speak(u);
+  }
+  function endSpeaking(){
+    jesus.classList.remove('speaking');
+    speechText.textContent = "I am with you always. Trust me, and you will never walk alone.";
+    voiceStatus.textContent = "Finished — Jesus ascends";
+    setTimeout(()=>{jesus.classList.add('walking');jesus.style.transition='left 2.5s ease-in-out';jesus.style.left=STAGE_EXIT+'px';},3000);
+  }
+  function resetAll(){
+    synth.cancel(); currentPart=0;
+    jesus.classList.remove('walking','speaking');
+    jesus.style.transition='none'; jesus.style.left='-200px';
+    speechBox.classList.remove('visible');
+    speechText.textContent="I am the light of the world. Click to hear my words.";
+    voiceStatus.textContent="Status: Ready";
+  }
+  startBtn.addEventListener('click',moveToCenter);
+  resetBtn.addEventListener('click',resetAll);
+});
 </script>
 </body>
 </html>
